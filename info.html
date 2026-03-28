@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Relais Casa Moresca · Guida Ospiti</title>
+<meta name="description" content="Guida per gli ospiti di Relais Casa Moresca, Porto Badino">
+<meta name="theme-color" content="#2C2118">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Casa Moresca">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --calce:#F7F3ED;
+  --calce2:#EDE8E0;
+  --calce3:#E0D9CF;
+  --sabbia:#C8BAA5;
+  --oliva:#6B7C5C;
+  --oliva-lt:#EBF0E6;
+  --oro:#B89650;
+  --oro-lt:#F5EDD8;
+  --marrone:#2C2118;
+  --marrone2:#4A3728;
+  --ink:#1A1A18;
+  --muted:#7A6E60;
+  --white:#FFFFFF;
+  --shadow:0 1px 12px rgba(44,33,24,.07);
+  --r:14px;
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html,body{background:var(--calce)}
+body{font-family:'Raleway',sans-serif;color:var(--ink);min-height:100vh;overflow-x:hidden}
+
+#install-bar{display:none;background:var(--marrone);padding:12px 16px;flex-direction:row;align-items:center;gap:10px;}
+#install-bar p{font-size:12px;color:rgba(255,255,255,.75);line-height:1.5;flex:1}
+#install-bar p strong{display:block;color:white;font-size:13px;margin-bottom:2px}
+.install-btn{background:var(--oro);color:white;border:none;border-radius:8px;padding:8px 14px;font-family:'Raleway',sans-serif;font-size:11px;font-weight:700;letter-spacing:.06em;cursor:pointer;white-space:nowrap;}
+.install-close{background:none;border:none;color:rgba(255,255,255,.4);font-size:22px;cursor:pointer;line-height:1;padding:0 2px;}
+
+.hero{
+  background:#FFFFFF;
+  padding:24px 24px 24px;
+  text-align:center;position:relative;
+}
+.hero::after{display:none}
+.hero-logo{width:360px;height:auto;display:block;margin:0 auto 16px;}
+.hero-divider{
+  width:40px;height:1px;
+  background:var(--sabbia);
+  margin:0 auto 12px;
+}
+.hero-tagline{display:none;}
+.hero-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:28px;font-weight:400;
+  color:var(--marrone);letter-spacing:.08em;line-height:1.2;
+  text-shadow:0 2px 12px rgba(44,33,24,.12), 0 1px 3px rgba(44,33,24,.08);
+}
+.hero-title em{display:none}
+.hero-sub{
+  font-size:9px;color:var(--muted);
+  margin-top:12px;letter-spacing:.22em;
+  text-shadow:0 1px 4px rgba(44,33,24,.08);
+}
+
+.lang-row{display:flex;justify-content:center;gap:6px;padding:18px 20px 4px;}
+.lang-btn{padding:6px 16px;border-radius:20px;font-family:'Raleway',sans-serif;font-size:11px;font-weight:600;letter-spacing:.08em;cursor:pointer;transition:all .2s;border:1px solid var(--calce3);background:var(--white);color:var(--muted);}
+.lang-btn.active{background:var(--marrone);color:white;border-color:var(--marrone);}
+
+.sections{padding:6px 14px 90px}
+
+.card{background:var(--white);border-radius:var(--r);border:1px solid var(--calce3);margin-bottom:8px;box-shadow:0 1px 8px rgba(44,33,24,.05);overflow:hidden;}
+.card-hdr{display:flex;align-items:center;gap:14px;padding:16px 18px;cursor:pointer;user-select:none;}
+.card-icon{font-size:19px;flex-shrink:0;width:26px;text-align:center}
+.card-title{font-family:'Raleway',sans-serif;font-size:13px;font-weight:700;color:var(--marrone);letter-spacing:.06em;text-transform:uppercase;flex:1;}
+.chevron{color:var(--calce3);font-size:12px;transition:transform .25s;}
+.card.open .chevron{transform:rotate(180deg)}
+.card-body{display:none;padding:0 16px 16px;border-top:1px solid var(--calce2);}
+.card.open .card-body{display:block}
+
+.row{display:flex;gap:10px;padding:10px 0;border-bottom:1px solid var(--calce2);}
+.row:last-child{border-bottom:none;padding-bottom:0}
+.row-label{font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--sabbia);flex-shrink:0;width:80px;padding-top:3px;line-height:1.4;}
+.row-val{font-size:13px;color:var(--ink);line-height:1.65;flex:1;}
+.row-val strong{font-weight:700;color:var(--marrone2)}
+.row-val a{color:var(--oliva);text-decoration:none;font-weight:600}
+
+.wifi-box{background:var(--calce);border-radius:10px;padding:14px;margin:12px 0;border:1px solid var(--calce3);}
+.wifi-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;gap:8px;}
+.wifi-row:last-child{margin-bottom:0}
+.wifi-label{font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--sabbia);min-width:60px;}
+.wifi-val{font-size:15px;font-weight:700;color:var(--marrone);letter-spacing:.04em;flex:1;}
+.copy-btn{background:var(--marrone);color:white;border:none;border-radius:7px;padding:7px 12px;font-family:'Raleway',sans-serif;font-size:10px;font-weight:700;letter-spacing:.08em;cursor:pointer;flex-shrink:0;}
+.copy-btn:active{background:var(--marrone2)}
+
+.note{background:var(--oliva-lt);border-left:2px solid var(--oliva);border-radius:0 8px 8px 0;padding:10px 12px;margin:10px 0;font-size:12px;color:var(--muted);line-height:1.65;}
+.note-warn{background:var(--oro-lt);border-left:2px solid var(--oro);border-radius:0 8px 8px 0;padding:10px 12px;margin:10px 0;font-size:12px;color:var(--muted);line-height:1.65;}
+
+.emg{list-style:none;padding:0}
+.emg li{display:flex;align-items:center;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--calce2);}
+.emg li:last-child{border-bottom:none;padding-bottom:0}
+.emg .en{font-size:13px;color:var(--ink);font-weight:500}
+.emg .en-num{color:var(--oliva);font-weight:700;font-size:14px;text-decoration:none;letter-spacing:.02em;}
+
+.map-btn{display:flex;align-items:center;justify-content:center;gap:8px;background:var(--marrone);color:white;border:none;border-radius:10px;padding:13px 16px;width:100%;font-family:'Raleway',sans-serif;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;text-decoration:none;margin-top:12px;}
+.map-btn:active{background:var(--marrone2)}
+
+.footer-bar{position:fixed;bottom:0;left:0;right:0;background:var(--marrone);padding:10px 16px;text-align:center;z-index:10;}
+.footer-bar p{font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.3);}
+
+.toast{position:fixed;bottom:52px;left:50%;transform:translateX(-50%);background:var(--oliva);color:white;padding:10px 22px;border-radius:24px;font-family:'Raleway',sans-serif;font-size:12px;font-weight:700;letter-spacing:.06em;z-index:999;animation:fadeup .25s ease;pointer-events:none;}
+@keyframes fadeup{from{opacity:0;transform:translateX(-50%) translateY(8px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
+</style>
+</head>
+<body>
+
+<div id="install-bar">
+  <p><strong>📱 Aggiungi alla schermata Home</strong>Accedi sempre alle info del tuo soggiorno</p>
+  <button class="install-btn" id="install-btn">Installa</button>
+  <button class="install-close" onclick="this.parentElement.style.display='none'">×</button>
+</div>
+
+<div class="hero">
+  <img class="hero-logo" src="https://static.wixstatic.com/media/cb1b98_b84204f1641846b8938a218cd263e9e2~mv2.png/v1/fill/w_341,h_82,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/banner%20grande%20400dpi.png" alt="Relais Casa Moresca">
+  <div class="hero-divider"></div>
+  <div class="hero-title" id="hero-title">Guida Ospiti</div>
+  <div class="hero-sub" id="hero-sub">Benvenuti · Welcome · Willkommen</div>
+</div>
+
+<div class="lang-row">
+  <button class="lang-btn active" onclick="setLang('it')">🇮🇹 IT</button>
+  <button class="lang-btn" onclick="setLang('en')">🇬🇧 EN</button>
+  <button class="lang-btn" onclick="setLang('de')">🇩🇪 DE</button>
+</div>
+
+<div class="sections">
+
+<div class="card open" id="s-wifi">
+  <div class="card-hdr" onclick="tog('s-wifi')">
+    <div class="card-icon">📶</div>
+    <div class="card-title" data-it="WiFi" data-en="WiFi" data-de="WiFi">WiFi</div>
+    <div class="chevron">▾</div>
+  </div>
+  <div class="card-body">
+    <div class="wifi-box">
+      <div class="wifi-row">
+        <span class="wifi-label" data-it="Rete" data-en="Network" data-de="Netzwerk">Rete</span>
+        <span class="wifi-val">CASA MORESCA WIFI</span>
+        <button class="copy-btn" onclick="cp('CASA MORESCA WIFI')">Copia</button>
+      </div>
+      <div class="wifi-row">
+        <span class="wifi-label">Password</span>
+        <span class="wifi-val">LAclippers</span>
+        <button class="copy-btn" onclick="cp('LAclippers')">Copia</button>
+      </div>
+    </div>
+    <div class="note" data-it="Connessione gratuita e illimitata in tutta la struttura. Alcune zone del giardino potrebbero non essere coperte." data-en="Free and unlimited connection throughout the villa. Some garden areas may not be covered." data-de="Kostenlose und unbegrenzte Verbindung. Einige Gartenbereiche sind möglicherweise nicht abgedeckt.">Connessione gratuita e illimitata. Alcune zone del giardino potrebbero non essere coperte.</div>
+  </div>
+</div>
+
+<div class="card" id="s-checkout">
+  <div class="card-hdr" onclick="tog('s-checkout')">
+    <div class="card-icon">🗝️</div>
+    <div class="card-title" data-it="Check-out" data-en="Check-out" data-de="Check-out">Check-out</div>
+    <div class="chevron">▾</div>
+  </div>
+  <div class="card-body">
+    <div class="row">
+      <div class="row-label" data-it="Orario" data-en="Time" data-de="Uhrzeit">Orario</div>
+      <div class="row-val"><strong data-it="Entro le ore 11:00" data-en="By 11:00 am" data-de="Bis 11:00 Uhr">Entro le ore 11:00</strong></div>
+    </div>
+    <div class="row">
+      <div class="row-label" data-it="Chiavi" data-en="Keys" data-de="Schlüssel">Chiavi</div>
+      <div class="row-val" data-it="Lasciare le chiavi sul tavolo del salone." data-en="Leave the keys on the living room table." data-de="Schlüssel auf dem Wohnzimmertisch lassen.">Lasciare le chiavi sul tavolo del salone.</div>
+    </div>
+    <div class="row">
+      <div class="row-label" data-it="Late check-out" data-en="Late check-out" data-de="Später">Late</div>
+      <div class="row-val" data-it="Disponibile su richiesta a tariffa conveniente secondo disponibilità." data-en="Available on request at a convenient rate, subject to availability." data-de="Auf Anfrage gegen Aufpreis, nach Verfügbarkeit.">Disponibile su richiesta secondo disponibilità.</div>
+    </div>
+  </div>
+</div>
+
+<div class="card" id="s-beach">
+  <div class="card-hdr" onclick="tog('s-beach')">
+    <div class="card-icon">🏖️</div>
+    <div class="card-title" data-it="Spiaggia" data-en="Beach" data-de="Strand">Spiaggia</div>
+    <div class="chevron">▾</div>
+  </div>
+  <div class="card-body">
+    <div class="row">
+      <div class="row-label" data-it="Distanza" data-en="Distance" data-de="Entfernung">Distanza</div>
+      <div class="row-val" data-it="~300 metri a piedi · Accesso incluso nel soggiorno" data-en="~300 meters on foot · Beach access included in the stay" data-de="~300 Meter zu Fuß · Strandzugang inklusive">~300 metri · Accesso incluso nel soggiorno</div>
+    </div>
+    <div class="row">
+      <div class="row-label" data-it="Stabilimento" data-en="Beach club" data-de="Badeanstalt">Stabilimento</div>
+      <div class="row-val"><strong>Lido di Venere · da Giancarlo</strong><br><span data-it="Ombrellone + 2 sdraio + 2 lettini inclusi" data-en="Umbrella + 2 deck chairs + 2 sunbeds included" data-de="Sonnenschirm + 2 Liegestühle + 2 Sonnenliegen inklusive">Ombrellone + 2 sdraio + 2 lettini inclusi</span></div>
+    </div>
+    <div class="row">
+      <div class="row-label" data-it="Bar & Ristorante" data-en="Bar & Restaurant" data-de="Bar">Bar</div>
+      <div class="row-val" data-it="Bar aperto dalle 08:00 al tramonto · Ristorante 13:00–15:30" data-en="Bar open 08:00 to dusk · Restaurant 13:00–15:30" data-de="Bar 08:00 bis Sonnenuntergang · Restaurant 13:00–15:30">Bar 08:00 – tramonto · Ristorante 13:00–15:30</div>
+    </div>
+    <div class="row">
+      <div class="row-label" data-it="Accesso" data-en="Access" data-de="Zugang">Accesso</div>
+      <div class="row-val" data-it="Entrare dal gate di Viale Priamo. Lo stabilimento è sulla destra guardando il mare." data-en="Enter through the gate on Viale Priamo. Beach club on the right facing the sea." data-de="Eingang über das Tor am Viale Priamo. Strand rechts mit Blick aufs Meer.">Gate di Viale Priamo → destra guardando il mare</div>
+    </div>
+    <a class="map-btn" href="https://maps.google.com/?q=Lido+di+Venere+Porto+Badino" target="_blank">📍 <span data-it="Apri in Google Maps" data-en="Open in Google Maps" data-de="In Google Maps öffnen">Apri in Google Maps</span></a>
+  </div>
+</div>
+
+<div class="card" id="s-services">
+  <div class="card-hdr" onclick="tog('s-services')">
+    <div class="card-icon">✦</div>
+    <div class="card-title" data-it="Servizi inclusi" data-en="Included services" data-de="Enthaltene Leistungen">Servizi inclusi</div>
+    <div class="chevron">▾</div>
+  </div>
+  <div class="card-body">
+    <div class="row">
+      <div class="row-label" data-it="Incluso" data-en="Included" data-de="Inklusive">Incluso</div>
+      <div class="row-val" data-it="Acqua · Luce · Gas · Aria condizionata · Internet · Prima pulizia · Servizio spiaggia" data-en="Water · Electricity · Gas · Air conditioning · Internet · First cleaning · Beach service" data-de="Wasser · Strom · Gas · Klimaanlage · Internet · Erste Reinigung · Strandservice">Acqua · Luce · Gas · Aria condizionata · Internet · Prima pulizia · Servizio spiaggia</div>
+    </div>
+    <div class="row">
+      <div class="row-label" data-it="Biciclette" data-en="Bikes" data-de="Fahrräder">Biciclette</div>
+      <div class="row-val" data-it="2 biciclette gratuite. Ulteriori bici noleggiabili a prezzo contenuto." data-en="2 free bicycles. Additional bikes can be rented at a low price." data-de="2 kostenlose Fahrräder. Weitere günstig mietbar.">2 gratuite · Ulteriori noleggiabili</div>
+    </div>
+    <div class="row">
+      <div class="row-label" data-it="Pulizie" data-en="Cleaning" data-de="Reinigung">Pulizie</div>
+      <div class="row-val" data-it="Settimanale gratuita per soggiorni ≥ 15 gg · Giornaliera a pagamento su richiesta" data-en="Free weekly cleaning for stays ≥ 15 days · Daily cleaning on request at extra cost" data-de="Kostenlose Wochenreinigung ≥ 15 Tage · Tägliche Reinigung auf Anfrage">Settimanale gratuita (≥ 15 gg) · Giornaliera su richiesta</div>
+    </div>
+  </div>
+</div>
+
+<div class="card" id="s-rules">
+  <div class="card-hdr" onclick="tog('s-rules')">
+    <div class="card-icon">📋</div>
+    <div class="card-title" data-it="Regole della casa" data-en="House rules" data-de="Hausregeln">Regole della casa</div>
+    <div class="chevron">▾</div>
+  </div>
+  <div class="card-body">
+    <div class="row">
+      <div class="row-label" data-it="Silenzio" data-en="Quiet hours" data-de="Ruhezeiten">Silenzio</div>
+      <div class="row-val"><strong>23:00 – 08:00</strong></div>
+    </div>
+    <div class="row">
+      <div class="row-label" data-it="Fumo" data-en="Smoking" data-de="Rauchen">Fumo</div>
+      <div class="row-val" data-it="Vietato all'interno · Nessun mozzicone in giardino" data-en="Not allowed inside · No cigarette butts in the garden" data-de="Im Haus verboten · Keine Zigarettenstummel im Garten">Vietato all'interno · Nessun mozzicone in giardino</div>
+    </div>
+    <div class="row">
+      <div class="row-label" data-it="Animali" data-en="Pets" data-de="Haustiere">Animali</div>
+      <div class="row-val" data-it="Non ammessi all'interno della struttura." data-en="Not allowed inside the structure." data-de="Im Haus nicht erlaubt.">Non ammessi all'interno</div>
+    </div>
+    <div class="row">
+      <div class="row-label" data-it="Parcheggio" data-en="Parking" data-de="Parken">Parcheggio</div>
+      <div class="row-val" data-it="Sorveglianza H24 · Vietato parcheggiare nel giardino del Relais" data-en="24h surveillance · Do not park in the Relais garden" data-de="24h-Überwachung · Nicht im Garten parken">Sorveglianza H24 · Vietato nel giardino</div>
+    </div>
+    <div class="row">
+      <div class="row-label" data-it="Raccolta rifiuti" data-en="Recycling" data-de="Recycling">Raccolta</div>
+      <div class="row-val" data-it="Bidoni colorati fuori dalla cucina. Lasciare i sacchi fuori dal cancello la sera prima della raccolta." data-en="Colored bins outside the kitchen. Leave bags outside the gate the evening before collection day." data-de="Farbige Behälter außerhalb der Küche. Taschen am Vorabend des Sammeltages vor das Tor.">Bidoni colorati fuori cucina · Sacchi fuori dal cancello la sera prima</div>
+    </div>
+    <div class="row">
+      <div class="row-label" data-it="Acqua" data-en="Tap water" data-de="Leitungswasser">Acqua</div>
+      <div class="row-val" data-it="Rubinetti interni: potabile · Fontanini in giardino: non potabile" data-en="Indoor taps: drinkable · Garden fountains: not drinkable" data-de="Innenrohre: trinkbar · Gartenbrunnen: nicht trinkbar">Rubinetti interni: potabile · Fontanini giardino: non potabile</div>
+    </div>
+    <div class="note-warn" data-it="⚠️ Irrigazione automatica ogni mattina presto. Non lasciare effetti personali in giardino la notte." data-en="⚠️ Automatic irrigation activates every morning. Do not leave belongings in the garden overnight." data-de="⚠️ Automatische Bewässerung jeden Morgen. Keine Gegenstände über Nacht im Garten.">⚠️ Irrigazione automatica ogni mattina. Non lasciare oggetti in giardino la notte.</div>
+  </div>
+</div>
+
+<div class="card" id="s-kitchen">
+  <div class="card-hdr" onclick="tog('s-kitchen')">
+    <div class="card-icon">🍳</div>
+    <div class="card-title" data-it="Cucina & Elettrodomestici" data-en="Kitchen & Appliances" data-de="Küche & Geräte">Cucina & Elettrodomestici</div>
+    <div class="chevron">▾</div>
+  </div>
+  <div class="card-body">
+    <div class="row">
+      <div class="row-label">Espresso</div>
+      <div class="row-val" data-it="Riempire serbatoio posteriore → simbolo tazzina → inserire capsula e abbassare manico → premere il pulsante. Si spegne automaticamente." data-en="Fill rear tank → press cup symbol → insert capsule and lower handle → press button. Switches off automatically." data-de="Hintertank füllen → Tassensymbol → Kapsel einlegen und Griff senken → Taste drücken. Schaltet sich ab.">Riempire serbatoio → tazzina → capsula → pulsante. Si spegne automaticamente.</div>
+    </div>
+    <div class="row">
+      <div class="row-label" data-it="Lavastoviglie" data-en="Dishwasher" data-de="Geschirrspüler">Lava&shy;stoviglie</div>
+      <div class="row-val">P1 75°C Intensivo · P2 60°C Universale · P3 45°C Eco · P4 Rapido · P5 Prelavaggio</div>
+    </div>
+    <div class="row">
+      <div class="row-label" data-it="Piano induzione" data-en="Induction hob" data-de="Induktion">Induzione</div>
+      <div class="row-val" data-it="B = sblocca · A = accende/spegne · E = sceglie zona · C = livello potenza" data-en="B = unlock · A = on/off · E = choose zone · C = power level" data-de="B = entsperren · A = ein/aus · E = Zone · C = Leistung">B sblocca · A accende · E zona · C potenza</div>
+    </div>
+    <div class="row">
+      <div class="row-label" data-it="Lavatrice" data-en="Washing machine" data-de="Waschmaschine">Lavatrice</div>
+      <div class="row-val" data-it="Usare esclusivamente il detergente fornito dalla struttura." data-en="Use only the detergent provided by the property." data-de="Nur das mitgelieferte Waschmittel verwenden.">Solo il detergente in dotazione</div>
+    </div>
+    <div class="row">
+      <div class="row-label" data-it="Microonde" data-en="Microwave" data-de="Mikrowelle">Microonde</div>
+      <div class="row-val" data-it="Premere MICROWAVE · Girare manopola per potenza P10–P100 · Premere START/+30SEC" data-en="Press MICROWAVE · Turn knob for power P10–P100 · Press START/+30SEC" data-de="MICROWAVE drücken · Knopf P10–P100 · START/+30SEC">MICROWAVE → manopola P10–P100 → START/+30SEC</div>
+    </div>
+    <div class="row">
+      <div class="row-label" data-it="Ferro" data-en="Iron" data-de="Bügeleisen">Ferro</div>
+      <div class="row-val" data-it="Ferro a vapore e asse da stiro a disposizione." data-en="Steam iron and ironing board available." data-de="Dampfbügeleisen und Bügelbrett vorhanden.">Ferro a vapore + asse da stiro</div>
+    </div>
+    <div class="row">
+      <div class="row-label" data-it="Asciugacapelli" data-en="Hair dryers" data-de="Föhne">Asciuga&shy;capelli</div>
+      <div class="row-val" data-it="3 disponibili, uno per bagno." data-en="3 available, one per bathroom." data-de="3 vorhanden, einer pro Bad.">3 disponibili, uno per bagno</div>
+    </div>
+  </div>
+</div>
+
+<div class="card" id="s-rooms">
+  <div class="card-hdr" onclick="tog('s-rooms')">
+    <div class="card-icon">📺</div>
+    <div class="card-title" data-it="Camere & TV" data-en="Rooms & TV" data-de="Zimmer & TV">Camere & TV</div>
+    <div class="chevron">▾</div>
+  </div>
+  <div class="card-body">
+    <div class="row">
+      <div class="row-label" data-it="TV Satellite" data-en="Satellite TV" data-de="Sat-TV">TV Satellite</div>
+      <div class="row-val" data-it="Canali italiani e stranieri. 2 telecomandi: TV HD Samsung + decoder TIVUSAT Humax." data-en="Italian and foreign channels. 2 remotes: Samsung HD TV + TIVUSAT Humax decoder." data-de="Ital. und ausländische Sender. 2 Fernbed.: Samsung HD TV + TIVUSAT Humax.">2 telecomandi: TV HD Samsung + decoder TIVUSAT Humax</div>
+    </div>
+    <div class="row">
+      <div class="row-label" data-it="Ventilatori" data-en="Ceiling fans" data-de="Ventilatoren">Ventilatori</div>
+      <div class="row-val" data-it="A soffitto in ogni camera, con telecomando." data-en="Ceiling fans in each room, operated by remote control." data-de="Deckenventilatoren in jedem Zimmer, mit Fernbedienung.">In ogni camera, con telecomando</div>
+    </div>
+    <div class="row">
+      <div class="row-label" data-it="Aria condizionata" data-en="Air conditioning" data-de="Klimaanlage">Aria condiz.</div>
+      <div class="row-val" data-it="Sistema AerVirdis: temperature confortevoli nel rispetto della normativa energetica (DPR 74/13). Non è possibile impostare temperature estreme." data-en="AerVirdis system: comfortable temperatures per Italian energy regulation DPR 74/13. Extreme temperatures cannot be set." data-de="AerVirdis-System: angenehme Temperaturen gemäß DPR 74/13. Extreme Temperaturen nicht einstellbar.">Sistema AerVirdis — temperature confortevoli (norma DPR 74/13)</div>
+    </div>
+    <div class="row">
+      <div class="row-label" data-it="Pronto soccorso" data-en="First aid" data-de="Erste Hilfe">Pronto soccorso</div>
+      <div class="row-val" data-it="Kit nel bagno della camera Paulonia." data-en="First aid kit in the Paulonia room bathroom." data-de="Erste-Hilfe-Set im Paulonia-Badezimmer.">Nel bagno della camera Paulonia</div>
+    </div>
+  </div>
+</div>
+
+<div class="card" id="s-garden">
+  <div class="card-hdr" onclick="tog('s-garden')">
+    <div class="card-icon">🌿</div>
+    <div class="card-title" data-it="Giardino & Esterno" data-en="Garden & Outdoor" data-de="Garten & Außen">Giardino & Esterno</div>
+    <div class="chevron">▾</div>
+  </div>
+  <div class="card-body">
+    <div class="row">
+      <div class="row-label" data-it="Doccia esterna" data-en="Outdoor shower" data-de="Außendusche">Doccia esterna</div>
+      <div class="row-val" data-it="Acqua calda disponibile. Shampoo e detergenti solo all'interno della piattaforma." data-en="Hot water available. Use shampoos and detergents only within the shower platform." data-de="Warmes Wasser. Shampoos nur auf der Duschfläche verwenden.">Acqua calda · Shampoo solo nella piattaforma</div>
+    </div>
+    <div class="row">
+      <div class="row-label" data-it="Illuminazione" data-en="Lighting" data-de="Beleuchtung">Illuminazione</div>
+      <div class="row-val" data-it="Il giardino è illuminato ovunque. Spegnere le luci quando non si è nel Relais." data-en="The garden is fully lit. Please switch off lights when not in the Relais." data-de="Der Garten ist überall beleuchtet. Licht ausschalten wenn abwesend.">Illuminato ovunque · Spegnere le luci in assenza</div>
+    </div>
+    <div class="note-warn" data-it="⚠️ Irrigazione automatica ogni mattina presto. Non lasciare effetti personali in giardino la notte: potrebbero bagnarsi." data-en="⚠️ Automatic irrigation activates early every morning. Do not leave belongings in the garden overnight — they may get wet." data-de="⚠️ Automatische Bewässerung jeden Morgen früh. Keine Gegenstände über Nacht im Garten — könnten nass werden.">⚠️ Irrigazione automatica ogni mattina. Non lasciare oggetti in giardino la notte.</div>
+  </div>
+</div>
+
+<div class="card" id="s-around">
+  <div class="card-hdr" onclick="tog('s-around')">
+    <div class="card-icon">🗺️</div>
+    <div class="card-title" data-it="Dintorni" data-en="Getting around" data-de="Umgebung">Dintorni</div>
+    <div class="chevron">▾</div>
+  </div>
+  <div class="card-body">
+    <div class="row">
+      <div class="row-label" data-it="Supermercato" data-en="Supermarket" data-de="Supermarkt">Supermercato</div>
+      <div class="row-val" data-it="Porto Badino: raggiungibile a piedi. Borgo Hermada: supermercati più grandi, pochi minuti in auto." data-en="Porto Badino: walkable. Borgo Hermada: larger supermarkets, a few minutes by car." data-de="Porto Badino: zu Fuß. Borgo Hermada: größere Supermärkte, wenige Minuten mit dem Auto.">Porto Badino (a piedi) · Borgo Hermada (auto, pochi min.)</div>
+    </div>
+    <div class="row">
+      <div class="row-label" data-it="Bar & Take Away" data-en="Bar & Take Away" data-de="Bar">Bar</div>
+      <div class="row-val" data-it='"Da Ambrogio" aperto tutti i giorni dalle 07:00 a notte fonda. Tabacchi, giornali, take away, pizzeria.' data-en='"Da Ambrogio" open daily from 07:00 to late night. Tobacco, newspapers, take away, pizzeria.' data-de='"Da Ambrogio" täglich ab 07:00 bis spät. Tabak, Zeitungen, Take-away, Pizzeria.'>"Da Ambrogio" · 07:00 – notte · Take away · Pizzeria</div>
+    </div>
+    <div class="row">
+      <div class="row-label" data-it="Treni" data-en="Trains" data-de="Züge">Treni</div>
+      <div class="row-val">Priverno Fossanova (13 km) · Monte San Biagio (13 km)<br><a href="https://trenitalia.it" target="_blank">trenitalia.it</a></div>
+    </div>
+    <div class="row">
+      <div class="row-label" data-it="Traghetti" data-en="Ferries" data-de="Fähren">Traghetti</div>
+      <div class="row-val">Terracina / San Felice → Ponza<br><a href="https://www.laziomar.it" target="_blank">laziomar.it</a> · <a href="https://www.navlib.it" target="_blank">navlib.it</a></div>
+    </div>
+    <a class="map-btn" href="https://maps.google.com/?q=Via+Didone+9+Porto+Badino+Terracina" target="_blank">📍 <span data-it="Come arrivare al Relais" data-en="How to reach the Relais" data-de="Anfahrt zum Relais">Come arrivare al Relais</span></a>
+  </div>
+</div>
+
+<div class="card" id="s-emergency">
+  <div class="card-hdr" onclick="tog('s-emergency')">
+    <div class="card-icon">🚨</div>
+    <div class="card-title" data-it="Numeri utili & Emergenze" data-en="Useful numbers & Emergencies" data-de="Notrufnummern">Numeri utili & Emergenze</div>
+    <div class="chevron">▾</div>
+  </div>
+  <div class="card-body">
+    <ul class="emg">
+      <li><span class="en" data-it="Ambulanza" data-en="Ambulance" data-de="Krankenwagen">Ambulanza</span><a class="en-num" href="tel:118">118</a></li>
+      <li><span class="en" data-it="Polizia" data-en="Police" data-de="Polizei">Polizia</span><a class="en-num" href="tel:113">113</a></li>
+      <li><span class="en" data-it="Pompieri" data-en="Firefighters" data-de="Feuerwehr">Pompieri</span><a class="en-num" href="tel:115">115</a></li>
+      <li><span class="en" data-it="Guardia Medica" data-en="Doctor on call" data-de="Notarzt">Guardia Medica</span><a class="en-num" href="tel:+393347487940">+39 334 748 79 40</a></li>
+      <li><span class="en" data-it="Farmacia · Borgo Hermada" data-en="Pharmacy · Borgo Hermada" data-de="Apotheke · Borgo Hermada">Farmacia · Borgo Hermada</span><a class="en-num" href="tel:+390773742047">+39 0773 74 20 47</a></li>
+      <li><span class="en" data-it="Ospedale · Terracina" data-en="Hospital · Terracina" data-de="Krankenhaus · Terracina">Ospedale · Terracina</span><a class="en-num" href="tel:+390773708100">+39 0773 70 81</a></li>
+      <li><span class="en" data-it="Guardiano residence" data-en="Residence guard" data-de="Wächter">Guardiano residence</span><a class="en-num" href="tel:+393776709356">+39 377 670 93 56</a></li>
+      <li><span class="en">Relais Casa Moresca</span><a class="en-num" href="tel:+393791451623">+39 379 145 16 23</a></li>
+    </ul>
+    <div class="note" style="margin-top:12px" data-it="Videosorveglianza H24 nelle aree comuni. Nessuna telecamera all'interno. In caso di blackout: illuminazione di emergenza automatica." data-en="24h CCTV on common roads. No cameras inside the Relais. Power outage: automatic emergency lighting." data-de="24h Videoüberwachung auf Gemeinschaftswegen. Keine Kameras im Relais. Stromausfall: automatische Notbeleuchtung.">Videosorveglianza H24 nelle aree comuni · Nessuna telecamera all'interno · Blackout: illuminazione di emergenza automatica</div>
+  </div>
+</div>
+
+</div>
+
+<div class="footer-bar"><p>bnbcasamoresca.com · +39 379 145 16 23</p></div>
+
+<script>
+const L={
+  it:{title:'Guida Ospiti',sub:'Benvenuti · Welcome · Willkommen'},
+  en:{title:'Guest Guide',sub:'Welcome · Benvenuti · Willkommen'},
+  de:{title:'Gästeführer',sub:'Willkommen · Welcome · Benvenuti'}
+};
+function setLang(l){
+  document.querySelectorAll('.lang-btn').forEach((b,i)=>{b.classList.toggle('active',['it','en','de'][i]===l)});
+  document.getElementById('hero-title').textContent=l==='it'?'Guida Ospiti':l==='en'?'Guest Guide':'Gästeführer';
+  document.getElementById('hero-sub').textContent=L[l].sub;
+  document.querySelectorAll('[data-'+l+']').forEach(el=>{el.textContent=el.getAttribute('data-'+l)});
+}
+function tog(id){document.getElementById(id).classList.toggle('open')}
+function cp(txt){
+  navigator.clipboard?.writeText(txt).then(()=>{
+    const t=document.createElement('div');t.className='toast';t.textContent='✓ Copiato!';
+    document.body.appendChild(t);setTimeout(()=>t.remove(),2000);
+  });
+}
+let dp;
+window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();dp=e;document.getElementById('install-bar').style.display='flex';});
+document.getElementById('install-btn')?.addEventListener('click',async()=>{if(!dp)return;dp.prompt();await dp.userChoice;dp=null;document.getElementById('install-bar').style.display='none';});
+if(/iphone|ipad|ipod/i.test(navigator.userAgent)&&!navigator.standalone){
+  const b=document.getElementById('install-bar');b.style.display='flex';
+  b.querySelector('p').innerHTML='<strong>📱 Aggiungi alla schermata Home</strong>Tocca ⬆️ poi "Aggiungi a Home Screen"';
+  document.getElementById('install-btn').style.display='none';
+}
+</script>
+</body>
+</html>
