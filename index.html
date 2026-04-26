@@ -150,12 +150,12 @@ body{font-family:'Raleway',sans-serif;color:var(--ink);min-height:100vh;overflow
       <div class="wifi-row">
         <span class="wifi-label" data-it="Rete" data-en="Network" data-de="Netzwerk" data-ru="Сеть">Rete</span>
         <span class="wifi-val">Relais Casa Moresca WiFi</span>
-        <button class="copy-btn" onclick="cp('Relais Casa Moresca WiFi')">Copia</button>
+        <button class="copy-btn" onclick="cp('Relais Casa Moresca WiFi')" data-it="Copia" data-en="Copy" data-de="Kopieren" data-ru="Копировать">Copia</button>
       </div>
       <div class="wifi-row">
         <span class="wifi-label">Password</span>
         <span class="wifi-val">LAclippers</span>
-        <button class="copy-btn" onclick="cp('LAclippers')">Copia</button>
+        <button class="copy-btn" onclick="cp('LAclippers')" data-it="Copia" data-en="Copy" data-de="Kopieren" data-ru="Копировать">Copia</button>
       </div>
     </div>
     <div style="font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--sabbia);padding:14px 0 6px;" data-it="Giardino (esterno)" data-en="Garden (outdoor)" data-de="Garten (außen)" data-ru="Сад (улица)">Giardino (esterno)</div>
@@ -163,12 +163,12 @@ body{font-family:'Raleway',sans-serif;color:var(--ink);min-height:100vh;overflow
       <div class="wifi-row">
         <span class="wifi-label" data-it="Rete" data-en="Network" data-de="Netzwerk" data-ru="Сеть">Rete</span>
         <span class="wifi-val">Relais Casa Moresca Outdoor</span>
-        <button class="copy-btn" onclick="cp('Relais Casa Moresca Outdoor')">Copia</button>
+        <button class="copy-btn" onclick="cp('Relais Casa Moresca Outdoor')" data-it="Copia" data-en="Copy" data-de="Kopieren" data-ru="Копировать">Copia</button>
       </div>
       <div class="wifi-row">
         <span class="wifi-label">Password</span>
         <span class="wifi-val">LAclippers</span>
-        <button class="copy-btn" onclick="cp('LAclippers')">Copia</button>
+        <button class="copy-btn" onclick="cp('LAclippers')" data-it="Copia" data-en="Copy" data-de="Kopieren" data-ru="Копировать">Copia</button>
       </div>
     </div>
     <div class="note" data-it="Connessione gratuita e illimitata in tutta la struttura." data-en="Free and unlimited connection throughout the villa." data-de="Kostenlose und unbegrenzte Verbindung im gesamten Anwesen." data-ru="Бесплатный безлимитный интернет по всей вилле.">Connessione gratuita e illimitata in tutta la struttura.</div>
@@ -485,7 +485,9 @@ const L={
   de:{title:'Gästeführer',sub:'Willkommen · Welcome · Benvenuti · Добро пожаловать'},
   ru:{title:'Гид для гостей',sub:'Добро пожаловать · Welcome · Willkommen · Benvenuti'}
 };
+let currentLang='it';
 function setLang(l){
+  currentLang=l;
   document.querySelectorAll('.lang-btn').forEach((b,i)=>{b.classList.toggle('active',['it','en','de','ru'][i]===l)});
   document.getElementById('hero-title').textContent=L[l]?L[l].title:'Guida Ospiti';
   document.getElementById('hero-sub').textContent=L[l].sub;
@@ -494,7 +496,8 @@ function setLang(l){
 function tog(id){document.getElementById(id).classList.toggle('open')}
 function cp(txt){
   navigator.clipboard?.writeText(txt).then(()=>{
-    const t=document.createElement('div');t.className='toast';t.textContent='✓ Copiato!';
+    const toastMsg={it:'✓ Copiato!',en:'✓ Copied!',de:'✓ Kopiert!',ru:'✓ Скопировано!'};
+    const t=document.createElement('div');t.className='toast';t.textContent=toastMsg[currentLang]||'✓ Copiato!';
     document.body.appendChild(t);setTimeout(()=>t.remove(),2000);
   });
 }
