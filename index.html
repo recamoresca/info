@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="it">
 <head>
 <meta charset="UTF-8">
@@ -133,6 +133,7 @@ body{font-family:'Raleway',sans-serif;color:var(--ink);min-height:100vh;overflow
   <button class="lang-btn active" onclick="setLang('it')">🇮🇹 IT</button>
   <button class="lang-btn" onclick="setLang('en')">🇬🇧 EN</button>
   <button class="lang-btn" onclick="setLang('de')">🇩🇪 DE</button>
+  <button class="lang-btn" onclick="setLang('ru')">🇷🇺 RU</button>
 </div>
 
 <div class="sections">
@@ -140,14 +141,14 @@ body{font-family:'Raleway',sans-serif;color:var(--ink);min-height:100vh;overflow
 <div class="card open" id="s-wifi">
   <div class="card-hdr" onclick="tog('s-wifi')">
     <div class="card-icon">📶</div>
-    <div class="card-title" data-it="WiFi" data-en="WiFi" data-de="WiFi">WiFi</div>
+    <div class="card-title" data-it="WiFi" data-en="WiFi" data-de="WiFi" data-ru="WiFi">WiFi</div>
     <div class="chevron">▾</div>
   </div>
   <div class="card-body">
-    <div style="font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--sabbia);padding:12px 0 6px;" data-it="Interno (villa)" data-en="Indoor (villa)" data-de="Innen (Villa)">Interno (villa)</div>
+    <div style="font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--sabbia);padding:12px 0 6px;" data-it="Interno (villa)" data-en="Indoor (villa)" data-de="Innen (Villa)" data-ru="Внутри (вилла)">Interno (villa)</div>
     <div class="wifi-box">
       <div class="wifi-row">
-        <span class="wifi-label" data-it="Rete" data-en="Network" data-de="Netzwerk">Rete</span>
+        <span class="wifi-label" data-it="Rete" data-en="Network" data-de="Netzwerk" data-ru="Сеть">Rete</span>
         <span class="wifi-val">Relais Casa Moresca WiFi</span>
         <button class="copy-btn" onclick="cp('Relais Casa Moresca WiFi')">Copia</button>
       </div>
@@ -157,10 +158,10 @@ body{font-family:'Raleway',sans-serif;color:var(--ink);min-height:100vh;overflow
         <button class="copy-btn" onclick="cp('LAclippers')">Copia</button>
       </div>
     </div>
-    <div style="font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--sabbia);padding:14px 0 6px;" data-it="Giardino (esterno)" data-en="Garden (outdoor)" data-de="Garten (außen)">Giardino (esterno)</div>
+    <div style="font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--sabbia);padding:14px 0 6px;" data-it="Giardino (esterno)" data-en="Garden (outdoor)" data-de="Garten (außen)" data-ru="Сад (улица)">Giardino (esterno)</div>
     <div class="wifi-box">
       <div class="wifi-row">
-        <span class="wifi-label" data-it="Rete" data-en="Network" data-de="Netzwerk">Rete</span>
+        <span class="wifi-label" data-it="Rete" data-en="Network" data-de="Netzwerk" data-ru="Сеть">Rete</span>
         <span class="wifi-val">Relais Casa Moresca Outdoor</span>
         <button class="copy-btn" onclick="cp('Relais Casa Moresca Outdoor')">Copia</button>
       </div>
@@ -170,28 +171,28 @@ body{font-family:'Raleway',sans-serif;color:var(--ink);min-height:100vh;overflow
         <button class="copy-btn" onclick="cp('LAclippers')">Copia</button>
       </div>
     </div>
-    <div class="note" data-it="Connessione gratuita e illimitata in tutta la struttura." data-en="Free and unlimited connection throughout the villa." data-de="Kostenlose und unbegrenzte Verbindung im gesamten Anwesen.">Connessione gratuita e illimitata in tutta la struttura.</div>
+    <div class="note" data-it="Connessione gratuita e illimitata in tutta la struttura." data-en="Free and unlimited connection throughout the villa." data-de="Kostenlose und unbegrenzte Verbindung im gesamten Anwesen." data-ru="Бесплатный безлимитный интернет по всей вилле.">Connessione gratuita e illimitata in tutta la struttura.</div>
   </div>
 </div>
 
 <div class="card" id="s-checkout">
   <div class="card-hdr" onclick="tog('s-checkout')">
     <div class="card-icon">🗝️</div>
-    <div class="card-title" data-it="Check-out" data-en="Check-out" data-de="Check-out">Check-out</div>
+    <div class="card-title" data-it="Check-out" data-en="Check-out" data-de="Check-out" data-ru="Выезд">Check-out</div>
     <div class="chevron">▾</div>
   </div>
   <div class="card-body">
     <div class="row">
-      <div class="row-label" data-it="Orario" data-en="Time" data-de="Uhrzeit">Orario</div>
-      <div class="row-val"><strong data-it="Entro le ore 11:00" data-en="By 11:00 am" data-de="Bis 11:00 Uhr">Entro le ore 11:00</strong></div>
+      <div class="row-label" data-it="Orario" data-en="Time" data-de="Uhrzeit" data-ru="Время">Orario</div>
+      <div class="row-val"><strong data-it="Entro le ore 11:00" data-en="By 11:00 am" data-de="Bis 11:00 Uhr" data-ru="До 11:00">Entro le ore 11:00</strong></div>
     </div>
     <div class="row">
-      <div class="row-label" data-it="Chiavi" data-en="Keys" data-de="Schlüssel">Chiavi</div>
-      <div class="row-val" data-it="Lasciare le chiavi sul tavolo del salone." data-en="Leave the keys on the living room table." data-de="Schlüssel auf dem Wohnzimmertisch lassen.">Lasciare le chiavi sul tavolo del salone.</div>
+      <div class="row-label" data-it="Chiavi" data-en="Keys" data-de="Schlüssel" data-ru="Ключи">Chiavi</div>
+      <div class="row-val" data-it="Lasciare le chiavi sul tavolo del salone." data-en="Leave the keys on the living room table." data-de="Schlüssel auf dem Wohnzimmertisch lassen." data-ru="Оставьте ключи на столе в гостиной.">Lasciare le chiavi sul tavolo del salone.</div>
     </div>
     <div class="row">
-      <div class="row-label" data-it="Late check-out" data-en="Late check-out" data-de="Später">Late</div>
-      <div class="row-val" data-it="Disponibile su richiesta a tariffa conveniente secondo disponibilità." data-en="Available on request at a convenient rate, subject to availability." data-de="Auf Anfrage gegen Aufpreis, nach Verfügbarkeit.">Disponibile su richiesta secondo disponibilità.</div>
+      <div class="row-label" data-it="Late check-out" data-en="Late check-out" data-de="Später" data-ru="Поздний выезд">Late</div>
+      <div class="row-val" data-it="Disponibile su richiesta a tariffa conveniente secondo disponibilità." data-en="Available on request at a convenient rate, subject to availability." data-de="Auf Anfrage gegen Aufpreis, nach Verfügbarkeit." data-ru="По запросу за доплату, по наличию.">Disponibile su richiesta secondo disponibilità.</div>
     </div>
   </div>
 </div>
@@ -199,48 +200,48 @@ body{font-family:'Raleway',sans-serif;color:var(--ink);min-height:100vh;overflow
 <div class="card" id="s-beach">
   <div class="card-hdr" onclick="tog('s-beach')">
     <div class="card-icon">🏖️</div>
-    <div class="card-title" data-it="Spiaggia" data-en="Beach" data-de="Strand">Spiaggia</div>
+    <div class="card-title" data-it="Spiaggia" data-en="Beach" data-de="Strand" data-ru="Пляж">Spiaggia</div>
     <div class="chevron">▾</div>
   </div>
   <div class="card-body">
     <div class="row">
-      <div class="row-label" data-it="Distanza" data-en="Distance" data-de="Entfernung">Distanza</div>
-      <div class="row-val" data-it="~300 metri a piedi · Accesso incluso nel soggiorno" data-en="~300 meters on foot · Beach access included in the stay" data-de="~300 Meter zu Fuß · Strandzugang inklusive">~300 metri · Accesso incluso nel soggiorno</div>
+      <div class="row-label" data-it="Distanza" data-en="Distance" data-de="Entfernung" data-ru="Расстояние">Distanza</div>
+      <div class="row-val" data-it="~300 metri a piedi · Accesso incluso nel soggiorno" data-en="~300 meters on foot · Beach access included in the stay" data-de="~300 Meter zu Fuß · Strandzugang inklusive" data-ru="~300 м пешком · Доступ включён в стоимость">~300 metri · Accesso incluso nel soggiorno</div>
     </div>
     <div class="row">
-      <div class="row-label" data-it="Stabilimento" data-en="Beach club" data-de="Badeanstalt">Stabilimento</div>
-      <div class="row-val"><strong>Lido di Venere · da Giancarlo</strong><br><span data-it="Ombrellone + 2 sdraio + 2 lettini inclusi" data-en="Umbrella + 2 deck chairs + 2 sunbeds included" data-de="Sonnenschirm + 2 Liegestühle + 2 Sonnenliegen inklusive">Ombrellone + 2 sdraio + 2 lettini inclusi</span></div>
+      <div class="row-label" data-it="Stabilimento" data-en="Beach club" data-de="Badeanstalt" data-ru="Пляжный клуб">Stabilimento</div>
+      <div class="row-val"><strong>Lido di Venere · da Giancarlo</strong><br><span data-it="Ombrellone + 2 sdraio + 2 lettini inclusi" data-en="Umbrella + 2 deck chairs + 2 sunbeds included" data-de="Sonnenschirm + 2 Liegestühle + 2 Sonnenliegen inklusive" data-ru="Зонт + 2 шезлонга + 2 лежака включены">Ombrellone + 2 sdraio + 2 lettini inclusi</span></div>
     </div>
     <div class="row">
-      <div class="row-label" data-it="Bar & Ristorante" data-en="Bar & Restaurant" data-de="Bar">Bar</div>
-      <div class="row-val" data-it="Bar aperto dalle 08:00 al tramonto · Ristorante 13:00–15:30" data-en="Bar open 08:00 to dusk · Restaurant 13:00–15:30" data-de="Bar 08:00 bis Sonnenuntergang · Restaurant 13:00–15:30">Bar 08:00 – tramonto · Ristorante 13:00–15:30</div>
+      <div class="row-label" data-it="Bar & Ristorante" data-en="Bar & Restaurant" data-de="Bar" data-ru="Бар и ресторан">Bar</div>
+      <div class="row-val" data-it="Bar aperto dalle 08:00 al tramonto · Ristorante 13:00–15:30" data-en="Bar open 08:00 to dusk · Restaurant 13:00–15:30" data-de="Bar 08:00 bis Sonnenuntergang · Restaurant 13:00–15:30" data-ru="Бар с 08:00 до заката · Ресторан 13:00–15:30">Bar 08:00 – tramonto · Ristorante 13:00–15:30</div>
     </div>
     <div class="row">
-      <div class="row-label" data-it="Accesso" data-en="Access" data-de="Zugang">Accesso</div>
-      <div class="row-val" data-it="Entrare dal gate di Viale Priamo. Lo stabilimento è sulla destra guardando il mare." data-en="Enter through the gate on Viale Priamo. Beach club on the right facing the sea." data-de="Eingang über das Tor am Viale Priamo. Strand rechts mit Blick aufs Meer.">Gate di Viale Priamo → destra guardando il mare</div>
+      <div class="row-label" data-it="Accesso" data-en="Access" data-de="Zugang" data-ru="Вход">Accesso</div>
+      <div class="row-val" data-it="Entrare dal gate di Viale Priamo. Lo stabilimento è sulla destra guardando il mare." data-en="Enter through the gate on Viale Priamo. Beach club on the right facing the sea." data-de="Eingang über das Tor am Viale Priamo. Strand rechts mit Blick aufs Meer." data-ru="Войти через ворота на Viale Priamo. Пляжный клуб справа лицом к морю.">Gate di Viale Priamo → destra guardando il mare</div>
     </div>
-    <a class="map-btn" href="https://maps.google.com/?q=Lido+di+Venere+Porto+Badino" target="_blank">📍 <span data-it="Apri in Google Maps" data-en="Open in Google Maps" data-de="In Google Maps öffnen">Apri in Google Maps</span></a>
+    <a class="map-btn" href="https://maps.google.com/?q=Lido+di+Venere+Porto+Badino" target="_blank">📍 <span data-it="Apri in Google Maps" data-en="Open in Google Maps" data-de="In Google Maps öffnen" data-ru="Открыть в Google Maps">Apri in Google Maps</span></a>
   </div>
 </div>
 
 <div class="card" id="s-services">
   <div class="card-hdr" onclick="tog('s-services')">
     <div class="card-icon">✦</div>
-    <div class="card-title" data-it="Servizi inclusi" data-en="Included services" data-de="Enthaltene Leistungen">Servizi inclusi</div>
+    <div class="card-title" data-it="Servizi inclusi" data-en="Included services" data-de="Enthaltene Leistungen" data-ru="Включённые услуги">Servizi inclusi</div>
     <div class="chevron">▾</div>
   </div>
   <div class="card-body">
     <div class="row">
-      <div class="row-label" data-it="Incluso" data-en="Included" data-de="Inklusive">Incluso</div>
-      <div class="row-val" data-it="Acqua · Luce · Gas · Aria condizionata · Internet · Prima pulizia · Servizio spiaggia" data-en="Water · Electricity · Gas · Air conditioning · Internet · First cleaning · Beach service" data-de="Wasser · Strom · Gas · Klimaanlage · Internet · Erste Reinigung · Strandservice">Acqua · Luce · Gas · Aria condizionata · Internet · Prima pulizia · Servizio spiaggia</div>
+      <div class="row-label" data-it="Incluso" data-en="Included" data-de="Inklusive" data-ru="Включено">Incluso</div>
+      <div class="row-val" data-it="Acqua · Luce · Gas · Aria condizionata · Internet · Prima pulizia · Servizio spiaggia" data-en="Water · Electricity · Gas · Air conditioning · Internet · First cleaning · Beach service" data-de="Wasser · Strom · Gas · Klimaanlage · Internet · Erste Reinigung · Strandservice" data-ru="Вода · Электричество · Газ · Кондиционер · Интернет · Первая уборка · Пляжный сервис">Acqua · Luce · Gas · Aria condizionata · Internet · Prima pulizia · Servizio spiaggia</div>
     </div>
     <div class="row">
-      <div class="row-label" data-it="Biciclette" data-en="Bikes" data-de="Fahrräder">Biciclette</div>
-      <div class="row-val" data-it="2 biciclette gratuite. Ulteriori bici noleggiabili a prezzo contenuto." data-en="2 free bicycles. Additional bikes can be rented at a low price." data-de="2 kostenlose Fahrräder. Weitere günstig mietbar.">2 gratuite · Ulteriori noleggiabili</div>
+      <div class="row-label" data-it="Biciclette" data-en="Bikes" data-de="Fahrräder" data-ru="Велосипеды">Biciclette</div>
+      <div class="row-val" data-it="2 biciclette gratuite. Ulteriori bici noleggiabili a prezzo contenuto." data-en="2 free bicycles. Additional bikes can be rented at a low price." data-de="2 kostenlose Fahrräder. Weitere günstig mietbar." data-ru="2 велосипеда бесплатно. Дополнительные велосипеды в аренду по низкой цене.">2 gratuite · Ulteriori noleggiabili</div>
     </div>
     <div class="row">
-      <div class="row-label" data-it="Pulizie" data-en="Cleaning" data-de="Reinigung">Pulizie</div>
-      <div class="row-val" data-it="Settimanale gratuita per soggiorni ≥ 15 gg · Giornaliera a pagamento su richiesta" data-en="Free weekly cleaning for stays ≥ 15 days · Daily cleaning on request at extra cost" data-de="Kostenlose Wochenreinigung ≥ 15 Tage · Tägliche Reinigung auf Anfrage">Settimanale gratuita (≥ 15 gg) · Giornaliera su richiesta</div>
+      <div class="row-label" data-it="Pulizie" data-en="Cleaning" data-de="Reinigung" data-ru="Уборка">Pulizie</div>
+      <div class="row-val" data-it="Settimanale gratuita per soggiorni ≥ 15 gg · Giornaliera a pagamento su richiesta" data-en="Free weekly cleaning for stays ≥ 15 days · Daily cleaning on request at extra cost" data-de="Kostenlose Wochenreinigung ≥ 15 Tage · Tägliche Reinigung auf Anfrage" data-ru="Еженедельная бесплатно при проживании ≥ 15 дней · Ежедневная за доплату по запросу">Settimanale gratuita (≥ 15 gg) · Giornaliera su richiesta</div>
     </div>
   </div>
 </div>
@@ -248,61 +249,61 @@ body{font-family:'Raleway',sans-serif;color:var(--ink);min-height:100vh;overflow
 <div class="card" id="s-rules">
   <div class="card-hdr" onclick="tog('s-rules')">
     <div class="card-icon">📋</div>
-    <div class="card-title" data-it="Regole della casa" data-en="House rules" data-de="Hausregeln">Regole della casa</div>
+    <div class="card-title" data-it="Regole della casa" data-en="House rules" data-de="Hausregeln" data-ru="Правила дома">Regole della casa</div>
     <div class="chevron">▾</div>
   </div>
   <div class="card-body">
     <div class="row">
-      <div class="row-label" data-it="Silenzio" data-en="Quiet hours" data-de="Ruhezeiten">Silenzio</div>
+      <div class="row-label" data-it="Silenzio" data-en="Quiet hours" data-de="Ruhezeiten" data-ru="Тишина">Silenzio</div>
       <div class="row-val"><strong>23:00 – 08:00</strong></div>
     </div>
     <div class="row">
-      <div class="row-label" data-it="Fumo" data-en="Smoking" data-de="Rauchen">Fumo</div>
-      <div class="row-val" data-it="Vietato all'interno · Nessun mozzicone in giardino" data-en="Not allowed inside · No cigarette butts in the garden" data-de="Im Haus verboten · Keine Zigarettenstummel im Garten">Vietato all'interno · Nessun mozzicone in giardino</div>
+      <div class="row-label" data-it="Fumo" data-en="Smoking" data-de="Rauchen" data-ru="Курение">Fumo</div>
+      <div class="row-val" data-it="Vietato all'interno · Nessun mozzicone in giardino" data-en="Not allowed inside · No cigarette butts in the garden" data-de="Im Haus verboten · Keine Zigarettenstummel im Garten" data-ru="Запрещено внутри · Окурки в саду запрещены">Vietato all'interno · Nessun mozzicone in giardino</div>
     </div>
     <div class="row">
-      <div class="row-label" data-it="Animali" data-en="Pets" data-de="Haustiere">Animali</div>
-      <div class="row-val" data-it="Non ammessi." data-en="Not allowed." data-de="Nicht erlaubt.">Non ammessi</div>
+      <div class="row-label" data-it="Animali" data-en="Pets" data-de="Haustiere" data-ru="Животные">Animali</div>
+      <div class="row-val" data-it="Non ammessi." data-en="Not allowed." data-de="Nicht erlaubt." data-ru="Не допускаются.">Non ammessi</div>
     </div>
     <div class="row">
-      <div class="row-label" data-it="Parcheggio" data-en="Parking" data-de="Parken">Parcheggio</div>
-      <div class="row-val" data-it="Parcheggio esterno in prossimità della villa. Vietato parcheggiare nel giardino del Relais." data-en="Outdoor parking near the villa. Do not park in the Relais garden." data-de="Außenparkplatz in der Nähe der Villa. Nicht im Garten parken.">Parcheggio esterno in prossimità della villa · Vietato nel giardino</div>
+      <div class="row-label" data-it="Parcheggio" data-en="Parking" data-de="Parken" data-ru="Парковка">Parcheggio</div>
+      <div class="row-val" data-it="Parcheggio esterno in prossimità della villa. Vietato parcheggiare nel giardino del Relais." data-en="Outdoor parking near the villa. Do not park in the Relais garden." data-de="Außenparkplatz in der Nähe der Villa. Nicht im Garten parken." data-ru="Парковка снаружи рядом с виллой. Въезд в сад Релейса запрещён.">Parcheggio esterno in prossimità della villa · Vietato nel giardino</div>
     </div>
     <div class="row">
-      <div class="row-label" data-it="Acqua" data-en="Tap water" data-de="Leitungswasser">Acqua</div>
-      <div class="row-val" data-it="Rubinetti interni: potabile · Fontanini in giardino: non potabile" data-en="Indoor taps: drinkable · Garden fountains: not drinkable" data-de="Innenrohre: trinkbar · Gartenbrunnen: nicht trinkbar">Rubinetti interni: potabile · Fontanini giardino: non potabile</div>
+      <div class="row-label" data-it="Acqua" data-en="Tap water" data-de="Leitungswasser" data-ru="Вода">Acqua</div>
+      <div class="row-val" data-it="Rubinetti interni: potabile · Fontanini in giardino: non potabile" data-en="Indoor taps: drinkable · Garden fountains: not drinkable" data-de="Innenrohre: trinkbar · Gartenbrunnen: nicht trinkbar" data-ru="Краны внутри: питьевая · Краны в саду: не питьевая">Rubinetti interni: potabile · Fontanini giardino: non potabile</div>
     </div>
-    <div class="note-warn" data-it="⚠️ Irrigazione automatica ogni mattina presto. Non lasciare effetti personali in giardino la notte." data-en="⚠️ Automatic irrigation activates every morning. Do not leave belongings in the garden overnight." data-de="⚠️ Automatische Bewässerung jeden Morgen. Keine Gegenstände über Nacht im Garten.">⚠️ Irrigazione automatica ogni mattina. Non lasciare oggetti in giardino la notte.</div>
+    <div class="note-warn" data-it="⚠️ Irrigazione automatica ogni mattina presto. Non lasciare effetti personali in giardino la notte." data-en="⚠️ Automatic irrigation activates every morning. Do not leave belongings in the garden overnight." data-de="⚠️ Automatische Bewässerung jeden Morgen. Keine Gegenstände über Nacht im Garten." data-ru="⚠️ Автополив каждое утро. Не оставляйте вещи в саду на ночь.">⚠️ Irrigazione automatica ogni mattina. Non lasciare oggetti in giardino la notte.</div>
   </div>
 </div>
 
 <div class="card" id="s-recycling">
   <div class="card-hdr" onclick="tog('s-recycling')">
     <div class="card-icon">♻️</div>
-    <div class="card-title" data-it="Raccolta differenziata" data-en="Recycling" data-de="Mülltrennung">Raccolta differenziata</div>
+    <div class="card-title" data-it="Raccolta differenziata" data-en="Recycling" data-de="Mülltrennung" data-ru="Раздельный сбор мусора">Raccolta differenziata</div>
     <div class="chevron">▾</div>
   </div>
   <div class="card-body">
-    <div class="note" data-it="Mettere i sacchi fuori dal cancello la sera prima della raccolta." data-en="Leave bags outside the gate the evening before collection day." data-de="Taschen am Vorabend des Sammeltages vor das Tor stellen.">🗓 Mettere i sacchi fuori dal cancello la sera prima della raccolta</div>
+    <div class="note" data-it="Mettere i sacchi fuori dal cancello la sera prima della raccolta." data-en="Leave bags outside the gate the evening before collection day." data-de="Taschen am Vorabend des Sammeltages vor das Tor stellen." data-ru="Вынесите мешки за ворота вечером накануне вывоза.">🗓 Mettere i sacchi fuori dal cancello la sera prima della raccolta</div>
     <div class="row">
-      <div class="row-label" data-it="🟤 Organico" data-en="🟤 Organic" data-de="🟤 Bioabfall">🟤 Organico</div>
-      <div class="row-val" data-it="Bidone coperchio marrone · Lunedì, Mercoledì e Sabato" data-en="Brown bin · Monday, Wednesday and Saturday" data-de="Brauner Eimer · Mo, Mi und Sa">Bidone coperchio marrone · Lun, Mer, Sab</div>
+      <div class="row-label" data-it="🟤 Organico" data-en="🟤 Organic" data-de="🟤 Bioabfall" data-ru="🟤 Органические отходы">🟤 Organico</div>
+      <div class="row-val" data-it="Bidone coperchio marrone · Lunedì, Mercoledì e Sabato" data-en="Brown bin · Monday, Wednesday and Saturday" data-de="Brauner Eimer · Mo, Mi und Sa" data-ru="Бак (коричневая крышка) · Пн, Ср, Сб">Bidone coperchio marrone · Lun, Mer, Sab</div>
     </div>
     <div class="row">
-      <div class="row-label" data-it="🔵 Carta e Cartone" data-en="🔵 Paper" data-de="🔵 Papier">🔵 Carta</div>
-      <div class="row-val" data-it="Bidone coperchio blu · Venerdì" data-en="Blue bin · Friday" data-de="Blauer Eimer · Freitag">Bidone coperchio blu · Venerdì</div>
+      <div class="row-label" data-it="🔵 Carta e Cartone" data-en="🔵 Paper" data-de="🔵 Papier" data-ru="🔵 Бумага и картон">🔵 Carta</div>
+      <div class="row-val" data-it="Bidone coperchio blu · Venerdì" data-en="Blue bin · Friday" data-de="Blauer Eimer · Freitag" data-ru="Бак (синяя крышка) · Пятница">Bidone coperchio blu · Venerdì</div>
     </div>
     <div class="row">
-      <div class="row-label" data-it="🟡 Plastica e Metalli" data-en="🟡 Plastic & Metal" data-de="🟡 Plastik & Metall">🟡 Plastica</div>
-      <div class="row-val" data-it="Bidone coperchio giallo · Giovedì (+ Domenica in luglio e agosto)" data-en="Yellow bin · Thursday (+ Sunday in July and August)" data-de="Gelber Eimer · Do (+ So im Juli/August)">Bidone coperchio giallo · Giovedì · +Domenica lug/ago</div>
+      <div class="row-label" data-it="🟡 Plastica e Metalli" data-en="🟡 Plastic & Metal" data-de="🟡 Plastik & Metall" data-ru="🟡 Пластик и металл">🟡 Plastica</div>
+      <div class="row-val" data-it="Bidone coperchio giallo · Giovedì (+ Domenica in luglio e agosto)" data-en="Yellow bin · Thursday (+ Sunday in July and August)" data-de="Gelber Eimer · Do (+ So im Juli/August)" data-ru="Бак (жёлтая крышка) · Чт (+ Вс в июле и августе)">Bidone coperchio giallo · Giovedì · +Domenica lug/ago</div>
     </div>
     <div class="row">
-      <div class="row-label" data-it="🟢 Vetro" data-en="🟢 Glass" data-de="🟢 Glas">🟢 Vetro</div>
-      <div class="row-val" data-it="Bidone coperchio verde · Ogni 15 giorni (vedi calendario)" data-en="Green bin · Every 15 days (see calendar)" data-de="Grüner Eimer · Alle 15 Tage (Kalender)">Bidone coperchio verde · Ogni 15 giorni</div>
+      <div class="row-label" data-it="🟢 Vetro" data-en="🟢 Glass" data-de="🟢 Glas" data-ru="🟢 Стекло">🟢 Vetro</div>
+      <div class="row-val" data-it="Bidone coperchio verde · Ogni 15 giorni (vedi calendario)" data-en="Green bin · Every 15 days (see calendar)" data-de="Grüner Eimer · Alle 15 Tage (Kalender)" data-ru="Бак (зелёная крышка) · Каждые 15 дней">Bidone coperchio verde · Ogni 15 giorni</div>
     </div>
     <div class="row">
-      <div class="row-label" data-it="⚫ Secco residuo" data-en="⚫ Residual waste" data-de="⚫ Restmüll">⚫ Secco</div>
-      <div class="row-val" data-it="Bidone coperchio grigio · Martedì" data-en="Grey bin · Tuesday" data-de="Grauer Eimer · Dienstag">Bidone coperchio grigio · Martedì</div>
+      <div class="row-label" data-it="⚫ Secco residuo" data-en="⚫ Residual waste" data-de="⚫ Restmüll" data-ru="⚫ Смешанные отходы">⚫ Secco</div>
+      <div class="row-val" data-it="Bidone coperchio grigio · Martedì" data-en="Grey bin · Tuesday" data-de="Grauer Eimer · Dienstag" data-ru="Бак (серая крышка) · Вторник">Bidone coperchio grigio · Martedì</div>
     </div>
   </div>
 </div>
@@ -310,37 +311,37 @@ body{font-family:'Raleway',sans-serif;color:var(--ink);min-height:100vh;overflow
 <div class="card" id="s-kitchen">
   <div class="card-hdr" onclick="tog('s-kitchen')">
     <div class="card-icon">🍳</div>
-    <div class="card-title" data-it="Cucina & Elettrodomestici" data-en="Kitchen & Appliances" data-de="Küche & Geräte">Cucina & Elettrodomestici</div>
+    <div class="card-title" data-it="Cucina & Elettrodomestici" data-en="Kitchen & Appliances" data-de="Küche & Geräte" data-ru="Кухня и техника">Cucina & Elettrodomestici</div>
     <div class="chevron">▾</div>
   </div>
   <div class="card-body">
     <div class="row">
       <div class="row-label">Espresso</div>
-      <div class="row-val" data-it="Riempire serbatoio posteriore → simbolo tazzina → inserire capsula e abbassare manico → premere il pulsante. Si spegne automaticamente." data-en="Fill rear tank → press cup symbol → insert capsule and lower handle → press button. Switches off automatically." data-de="Hintertank füllen → Tassensymbol → Kapsel einlegen und Griff senken → Taste drücken. Schaltet sich ab.">Riempire serbatoio → tazzina → capsula → pulsante. Si spegne automaticamente.</div>
+      <div class="row-val" data-it="Riempire serbatoio posteriore → simbolo tazzina → inserire capsula e abbassare manico → premere il pulsante. Si spegne automaticamente." data-en="Fill rear tank → press cup symbol → insert capsule and lower handle → press button. Switches off automatically." data-de="Hintertank füllen → Tassensymbol → Kapsel einlegen und Griff senken → Taste drücken. Schaltet sich ab." data-ru="Наполнить задний резервуар → символ чашки → вставить капсулу → нажать кнопку. Выключается автоматически.">Riempire serbatoio → tazzina → capsula → pulsante. Si spegne automaticamente.</div>
     </div>
     <div class="row">
-      <div class="row-label" data-it="Lavastoviglie" data-en="Dishwasher" data-de="Geschirrspüler">Lava&shy;stoviglie</div>
+      <div class="row-label" data-it="Lavastoviglie" data-en="Dishwasher" data-de="Geschirrspüler" data-ru="Посудомоечная машина">Lava&shy;stoviglie</div>
       <div class="row-val">P1 75°C Intensivo · P2 60°C Universale · P3 45°C Eco · P4 Rapido · P5 Prelavaggio</div>
     </div>
     <div class="row">
-      <div class="row-label" data-it="Piano induzione" data-en="Induction hob" data-de="Induktion">Induzione</div>
-      <div class="row-val" data-it="Far riferimento alle istruzioni sulla placca del piano cottura. B = sblocca · A = accende/spegne · E = sceglie zona · C = livello potenza" data-en="Refer to the instructions on the hob panel. B = unlock · A = on/off · E = choose zone · C = power level" data-de="Anleitung auf der Herdplatte beachten. B = entsperren · A = ein/aus · E = Zone · C = Leistung">Far riferimento alle istruzioni sulla placca del piano cottura. B sblocca · A accende · E zona · C potenza</div>
+      <div class="row-label" data-it="Piano induzione" data-en="Induction hob" data-de="Induktion" data-ru="Индукционная плита">Induzione</div>
+      <div class="row-val" data-it="Far riferimento alle istruzioni sulla placca del piano cottura. B = sblocca · A = accende/spegne · E = sceglie zona · C = livello potenza" data-en="Refer to the instructions on the hob panel. B = unlock · A = on/off · E = choose zone · C = power level" data-de="Anleitung auf der Herdplatte beachten. B = entsperren · A = ein/aus · E = Zone · C = Leistung" data-ru="См. инструкции на панели плиты. B = разблокировать · A = вкл/выкл · E = зона · C = мощность">Far riferimento alle istruzioni sulla placca del piano cottura. B sblocca · A accende · E zona · C potenza</div>
     </div>
     <div class="row">
-      <div class="row-label" data-it="Lavatrice" data-en="Washing machine" data-de="Waschmaschine">Lavatrice</div>
-      <div class="row-val" data-it="Usare esclusivamente il detergente fornito dalla struttura." data-en="Use only the detergent provided by the property." data-de="Nur das mitgelieferte Waschmittel verwenden.">Solo il detergente in dotazione</div>
+      <div class="row-label" data-it="Lavatrice" data-en="Washing machine" data-de="Waschmaschine" data-ru="Стиральная машина">Lavatrice</div>
+      <div class="row-val" data-it="Usare esclusivamente il detergente fornito dalla struttura." data-en="Use only the detergent provided by the property." data-de="Nur das mitgelieferte Waschmittel verwenden." data-ru="Использовать только моющее средство, предоставленное виллой.">Solo il detergente in dotazione</div>
     </div>
     <div class="row">
-      <div class="row-label" data-it="Microonde" data-en="Microwave" data-de="Mikrowelle">Microonde</div>
-      <div class="row-val" data-it="Premere MICROWAVE · Girare manopola per potenza P10–P100 · Premere START/+30SEC" data-en="Press MICROWAVE · Turn knob for power P10–P100 · Press START/+30SEC" data-de="MICROWAVE drücken · Knopf P10–P100 · START/+30SEC">MICROWAVE → manopola P10–P100 → START/+30SEC</div>
+      <div class="row-label" data-it="Microonde" data-en="Microwave" data-de="Mikrowelle" data-ru="Микроволновая печь">Microonde</div>
+      <div class="row-val" data-it="Premere MICROWAVE · Girare manopola per potenza P10–P100 · Premere START/+30SEC" data-en="Press MICROWAVE · Turn knob for power P10–P100 · Press START/+30SEC" data-de="MICROWAVE drücken · Knopf P10–P100 · START/+30SEC" data-ru="Нажать MICROWAVE · Повернуть ручку P10–P100 · Нажать START/+30SEC">MICROWAVE → manopola P10–P100 → START/+30SEC</div>
     </div>
     <div class="row">
-      <div class="row-label" data-it="Ferro" data-en="Iron" data-de="Bügeleisen">Ferro</div>
-      <div class="row-val" data-it="Ferro a vapore e asse da stiro a disposizione." data-en="Steam iron and ironing board available." data-de="Dampfbügeleisen und Bügelbrett vorhanden.">Ferro a vapore + asse da stiro</div>
+      <div class="row-label" data-it="Ferro" data-en="Iron" data-de="Bügeleisen" data-ru="Утюг">Ferro</div>
+      <div class="row-val" data-it="Ferro a vapore e asse da stiro a disposizione." data-en="Steam iron and ironing board available." data-de="Dampfbügeleisen und Bügelbrett vorhanden." data-ru="Паровой утюг и гладильная доска в наличии.">Ferro a vapore + asse da stiro</div>
     </div>
     <div class="row">
-      <div class="row-label" data-it="Asciugacapelli" data-en="Hair dryers" data-de="Föhne">Asciuga&shy;capelli</div>
-      <div class="row-val" data-it="3 disponibili, uno per bagno." data-en="3 available, one per bathroom." data-de="3 vorhanden, einer pro Bad.">3 disponibili, uno per bagno</div>
+      <div class="row-label" data-it="Asciugacapelli" data-en="Hair dryers" data-de="Föhne" data-ru="Фен">Asciuga&shy;capelli</div>
+      <div class="row-val" data-it="3 disponibili, uno per bagno." data-en="3 available, one per bathroom." data-de="3 vorhanden, einer pro Bad." data-ru="3 штуки, по одному на ванную.">3 disponibili, uno per bagno</div>
     </div>
   </div>
 </div>
@@ -348,25 +349,25 @@ body{font-family:'Raleway',sans-serif;color:var(--ink);min-height:100vh;overflow
 <div class="card" id="s-rooms">
   <div class="card-hdr" onclick="tog('s-rooms')">
     <div class="card-icon">📺</div>
-    <div class="card-title" data-it="Camere & TV" data-en="Rooms & TV" data-de="Zimmer & TV">Camere & TV</div>
+    <div class="card-title" data-it="Camere & TV" data-en="Rooms & TV" data-de="Zimmer & TV" data-ru="Комнаты и ТВ">Camere & TV</div>
     <div class="chevron">▾</div>
   </div>
   <div class="card-body">
     <div class="row">
-      <div class="row-label" data-it="Smart TV" data-en="Smart TV" data-de="Smart TV">Smart TV</div>
-      <div class="row-val" data-it="Smart TV in salone con canali italiani e stranieri (decoder TIVUSAT Humax incluso). Puoi collegare il tuo account Netflix o Amazon Prime direttamente dalla TV." data-en="Smart TV in the living room with Italian and foreign channels (TIVUSAT Humax decoder included). You can log in to your personal Netflix or Amazon Prime account directly on the TV." data-de="Smart TV im Wohnzimmer mit italienischen und ausländischen Sendern. Netflix- oder Amazon-Prime-Konto direkt anmelden.">Smart TV in salone · Accedi al tuo account <strong>Netflix</strong> o <strong>Amazon Prime</strong> direttamente dalla TV</div>
+      <div class="row-label" data-it="Smart TV" data-en="Smart TV" data-de="Smart TV" data-ru="Smart TV">Smart TV</div>
+      <div class="row-val" data-it="Smart TV in salone con canali italiani e stranieri (decoder TIVUSAT Humax incluso). Puoi collegare il tuo account Netflix o Amazon Prime direttamente dalla TV." data-en="Smart TV in the living room with Italian and foreign channels (TIVUSAT Humax decoder included). You can log in to your personal Netflix or Amazon Prime account directly on the TV." data-de="Smart TV im Wohnzimmer mit italienischen und ausländischen Sendern. Netflix- oder Amazon-Prime-Konto direkt anmelden." data-ru="Smart TV в гостиной с итальянскими и зарубежными каналами (декодер TIVUSAT Humax включён). Можно войти в Netflix или Amazon Prime прямо с ТВ.">Smart TV in salone · Accedi al tuo account <strong>Netflix</strong> o <strong>Amazon Prime</strong> direttamente dalla TV</div>
     </div>
     <div class="row">
-      <div class="row-label" data-it="Ventilatori" data-en="Ceiling fans" data-de="Ventilatoren">Ventilatori</div>
-      <div class="row-val" data-it="A soffitto in ogni camera, con telecomando." data-en="Ceiling fans in each room, operated by remote control." data-de="Deckenventilatoren in jedem Zimmer, mit Fernbedienung.">In ogni camera, con telecomando</div>
+      <div class="row-label" data-it="Ventilatori" data-en="Ceiling fans" data-de="Ventilatoren" data-ru="Вентиляторы">Ventilatori</div>
+      <div class="row-val" data-it="A soffitto in ogni camera, con telecomando." data-en="Ceiling fans in each room, operated by remote control." data-de="Deckenventilatoren in jedem Zimmer, mit Fernbedienung." data-ru="Потолочные в каждой комнате, с пультом.">In ogni camera, con telecomando</div>
     </div>
     <div class="row">
-      <div class="row-label" data-it="Aria condizionata" data-en="Air conditioning" data-de="Klimaanlage">Aria condiz.</div>
-      <div class="row-val" data-it="Sistema AerVirdis: temperature confortevoli nel rispetto della normativa energetica (DPR 74/13). Non è possibile impostare temperature estreme." data-en="AerVirdis system: comfortable temperatures per Italian energy regulation DPR 74/13. Extreme temperatures cannot be set." data-de="AerVirdis-System: angenehme Temperaturen gemäß DPR 74/13. Extreme Temperaturen nicht einstellbar.">Sistema AerVirdis — temperature confortevoli (norma DPR 74/13)</div>
+      <div class="row-label" data-it="Aria condizionata" data-en="Air conditioning" data-de="Klimaanlage" data-ru="Кондиционирование">Aria condiz.</div>
+      <div class="row-val" data-it="Sistema AerVirdis: temperature confortevoli nel rispetto della normativa energetica (DPR 74/13). Non è possibile impostare temperature estreme." data-en="AerVirdis system: comfortable temperatures per Italian energy regulation DPR 74/13. Extreme temperatures cannot be set." data-de="AerVirdis-System: angenehme Temperaturen gemäß DPR 74/13. Extreme Temperaturen nicht einstellbar." data-ru="Система AerVirdis: комфортная температура согласно нормам DPR 74/13. Экстремальные значения недоступны.">Sistema AerVirdis — temperature confortevoli (norma DPR 74/13)</div>
     </div>
     <div class="row">
-      <div class="row-label" data-it="Pronto soccorso" data-en="First aid" data-de="Erste Hilfe">Pronto soccorso</div>
-      <div class="row-val" data-it="Kit nel bagno della camera Paulonia." data-en="First aid kit in the Paulonia room bathroom." data-de="Erste-Hilfe-Set im Paulonia-Badezimmer.">Nel bagno della camera Paulonia</div>
+      <div class="row-label" data-it="Pronto soccorso" data-en="First aid" data-de="Erste Hilfe" data-ru="Аптечка">Pronto soccorso</div>
+      <div class="row-val" data-it="Kit nel bagno della camera Paulonia." data-en="First aid kit in the Paulonia room bathroom." data-de="Erste-Hilfe-Set im Paulonia-Badezimmer." data-ru="Аптечка в ванной комнаты Paulonia.">Nel bagno della camera Paulonia</div>
     </div>
   </div>
 </div>
@@ -374,46 +375,46 @@ body{font-family:'Raleway',sans-serif;color:var(--ink);min-height:100vh;overflow
 <div class="card" id="s-garden">
   <div class="card-hdr" onclick="tog('s-garden')">
     <div class="card-icon">🌿</div>
-    <div class="card-title" data-it="Giardino & Esterno" data-en="Garden & Outdoor" data-de="Garten & Außen">Giardino & Esterno</div>
+    <div class="card-title" data-it="Giardino & Esterno" data-en="Garden & Outdoor" data-de="Garten & Außen" data-ru="Сад и улица">Giardino & Esterno</div>
     <div class="chevron">▾</div>
   </div>
   <div class="card-body">
     <div class="row">
-      <div class="row-label" data-it="Doccia esterna" data-en="Outdoor shower" data-de="Außendusche">Doccia esterna</div>
-      <div class="row-val" data-it="Acqua calda disponibile. Shampoo e detergenti solo all'interno della piattaforma." data-en="Hot water available. Use shampoos and detergents only within the shower platform." data-de="Warmes Wasser. Shampoos nur auf der Duschfläche verwenden.">Acqua calda · Shampoo solo nella piattaforma</div>
+      <div class="row-label" data-it="Doccia esterna" data-en="Outdoor shower" data-de="Außendusche" data-ru="Душ на улице">Doccia esterna</div>
+      <div class="row-val" data-it="Acqua calda disponibile. Shampoo e detergenti solo all'interno della piattaforma." data-en="Hot water available. Use shampoos and detergents only within the shower platform." data-de="Warmes Wasser. Shampoos nur auf der Duschfläche verwenden." data-ru="Горячая вода есть. Шампунь и моющие средства — только в пределах душевой площадки.">Acqua calda · Shampoo solo nella piattaforma</div>
     </div>
     <div class="row">
-      <div class="row-label" data-it="Illuminazione" data-en="Lighting" data-de="Beleuchtung">Illuminazione</div>
-      <div class="row-val" data-it="Il giardino è illuminato ovunque. Spegnere le luci quando non si è nel Relais." data-en="The garden is fully lit. Please switch off lights when not in the Relais." data-de="Der Garten ist überall beleuchtet. Licht ausschalten wenn abwesend.">Illuminato ovunque · Spegnere le luci in assenza</div>
+      <div class="row-label" data-it="Illuminazione" data-en="Lighting" data-de="Beleuchtung" data-ru="Освещение">Illuminazione</div>
+      <div class="row-val" data-it="Il giardino è illuminato ovunque. Spegnere le luci quando non si è nel Relais." data-en="The garden is fully lit. Please switch off lights when not in the Relais." data-de="Der Garten ist überall beleuchtet. Licht ausschalten wenn abwesend." data-ru="Сад освещён повсюду. Выключайте свет, уходя из Релейса.">Illuminato ovunque · Spegnere le luci in assenza</div>
     </div>
-    <div class="note-warn" data-it="⚠️ Irrigazione automatica ogni mattina presto. Non lasciare effetti personali in giardino la notte: potrebbero bagnarsi." data-en="⚠️ Automatic irrigation activates early every morning. Do not leave belongings in the garden overnight — they may get wet." data-de="⚠️ Automatische Bewässerung jeden Morgen früh. Keine Gegenstände über Nacht im Garten — könnten nass werden.">⚠️ Irrigazione automatica ogni mattina. Non lasciare oggetti in giardino la notte.</div>
+    <div class="note-warn" data-it="⚠️ Irrigazione automatica ogni mattina presto. Non lasciare effetti personali in giardino la notte: potrebbero bagnarsi." data-en="⚠️ Automatic irrigation activates early every morning. Do not leave belongings in the garden overnight — they may get wet." data-de="⚠️ Automatische Bewässerung jeden Morgen früh. Keine Gegenstände über Nacht im Garten — könnten nass werden." data-ru="⚠️ Автополив каждое утро рано. Не оставляйте вещи в саду на ночь — они могут намокнуть.">⚠️ Irrigazione automatica ogni mattina. Non lasciare oggetti in giardino la notte.</div>
   </div>
 </div>
 
 <div class="card" id="s-around">
   <div class="card-hdr" onclick="tog('s-around')">
     <div class="card-icon">🗺️</div>
-    <div class="card-title" data-it="Dintorni" data-en="Getting around" data-de="Umgebung">Dintorni</div>
+    <div class="card-title" data-it="Dintorni" data-en="Getting around" data-de="Umgebung" data-ru="Окрестности">Dintorni</div>
     <div class="chevron">▾</div>
   </div>
   <div class="card-body">
     <div class="row">
-      <div class="row-label" data-it="Supermercato" data-en="Supermarket" data-de="Supermarkt">Supermercato</div>
-      <div class="row-val" data-it="Porto Badino: raggiungibile a piedi. Borgo Hermada: supermercati più grandi, pochi minuti in auto." data-en="Porto Badino: walkable. Borgo Hermada: larger supermarkets, a few minutes by car." data-de="Porto Badino: zu Fuß. Borgo Hermada: größere Supermärkte, wenige Minuten mit dem Auto.">Porto Badino (a piedi) · Borgo Hermada (auto, pochi min.)</div>
+      <div class="row-label" data-it="Supermercato" data-en="Supermarket" data-de="Supermarkt" data-ru="Супермаркет">Supermercato</div>
+      <div class="row-val" data-it="Porto Badino: raggiungibile a piedi. Borgo Hermada: supermercati più grandi, pochi minuti in auto." data-en="Porto Badino: walkable. Borgo Hermada: larger supermarkets, a few minutes by car." data-de="Porto Badino: zu Fuß. Borgo Hermada: größere Supermärkte, wenige Minuten mit dem Auto." data-ru="Порто-Бадино: пешком. Борго-Эрмада: крупные супермаркеты, несколько минут на машине.">Porto Badino (a piedi) · Borgo Hermada (auto, pochi min.)</div>
     </div>
     <div class="row">
-      <div class="row-label" data-it="Bar & Take Away" data-en="Bar & Take Away" data-de="Bar">Bar</div>
+      <div class="row-label" data-it="Bar & Take Away" data-en="Bar & Take Away" data-de="Bar" data-ru="Бар и еда на вынос">Bar</div>
       <div class="row-val" data-it='"Da Ambrogio" aperto tutti i giorni dalle 07:00 a notte fonda. Tabacchi, giornali, take away, pizzeria.' data-en='"Da Ambrogio" open daily from 07:00 to late night. Tobacco, newspapers, take away, pizzeria.' data-de='"Da Ambrogio" täglich ab 07:00 bis spät. Tabak, Zeitungen, Take-away, Pizzeria.'>"Da Ambrogio" · 07:00 – notte · Take away · Pizzeria</div>
     </div>
     <div class="row">
-      <div class="row-label" data-it="Treni" data-en="Trains" data-de="Züge">Treni</div>
+      <div class="row-label" data-it="Treni" data-en="Trains" data-de="Züge" data-ru="Поезда">Treni</div>
       <div class="row-val">Priverno Fossanova (13 km) · Monte San Biagio (13 km)<br><a href="https://trenitalia.it" target="_blank">trenitalia.it</a></div>
     </div>
     <div class="row">
-      <div class="row-label" data-it="Traghetti" data-en="Ferries" data-de="Fähren">Traghetti</div>
+      <div class="row-label" data-it="Traghetti" data-en="Ferries" data-de="Fähren" data-ru="Паромы">Traghetti</div>
       <div class="row-val">Terracina / San Felice → Ponza<br><a href="https://www.laziomar.it" target="_blank">laziomar.it</a> · <a href="https://www.navlib.it" target="_blank">navlib.it</a></div>
     </div>
-    <a class="map-btn" href="https://maps.google.com/?q=Via+Didone+9+Porto+Badino+Terracina" target="_blank">📍 <span data-it="Come arrivare al Relais" data-en="How to reach the Relais" data-de="Anfahrt zum Relais">Come arrivare al Relais</span></a>
+    <a class="map-btn" href="https://maps.google.com/?q=Via+Didone+9+Porto+Badino+Terracina" target="_blank">📍 <span data-it="Come arrivare al Relais" data-en="How to reach the Relais" data-de="Anfahrt zum Relais" data-ru="Как добраться до Релейса">Come arrivare al Relais</span></a>
   </div>
 </div>
 
@@ -422,21 +423,21 @@ body{font-family:'Raleway',sans-serif;color:var(--ink);min-height:100vh;overflow
 <div class="card" id="s-contact">
   <div class="card-hdr" onclick="tog('s-contact')">
     <div class="card-icon">👤</div>
-    <div class="card-title" data-it="Il tuo referente" data-en="Your host contact" data-de="Ihr Ansprechpartner">Il tuo referente</div>
+    <div class="card-title" data-it="Il tuo referente" data-en="Your host contact" data-de="Ihr Ansprechpartner" data-ru="Ваш контакт">Il tuo referente</div>
     <div class="chevron">▾</div>
   </div>
   <div class="card-body">
     <div class="row">
-      <div class="row-label" data-it="Nome" data-en="Name" data-de="Name">Nome</div>
+      <div class="row-label" data-it="Nome" data-en="Name" data-de="Name" data-ru="Имя">Nome</div>
       <div class="row-val"><strong>Joele Meneghello</strong></div>
     </div>
     <div class="row">
-      <div class="row-label" data-it="Telefono" data-en="Phone" data-de="Telefon">Telefono</div>
+      <div class="row-label" data-it="Telefono" data-en="Phone" data-de="Telefon" data-ru="Телефон">Telefono</div>
       <div class="row-val"><a href="tel:+393899650244">+39 389 965 0244</a></div>
     </div>
     <div class="row">
-      <div class="row-label" data-it="Disponibilità" data-en="Availability" data-de="Erreichbarkeit">Disponibilità</div>
-      <div class="row-val" data-it="Disponibile H24" data-en="Available 24/7" data-de="24/7 erreichbar">Disponibile H24</div>
+      <div class="row-label" data-it="Disponibilità" data-en="Availability" data-de="Erreichbarkeit" data-ru="Доступность">Disponibilità</div>
+      <div class="row-val" data-it="Disponibile H24" data-en="Available 24/7" data-de="24/7 erreichbar" data-ru="Доступен круглосуточно">Disponibile H24</div>
     </div>
   </div>
 </div>
@@ -444,32 +445,32 @@ body{font-family:'Raleway',sans-serif;color:var(--ink);min-height:100vh;overflow
 <div class="card" id="s-excursions">
   <div class="card-hdr" onclick="tog('s-excursions')">
     <div class="card-icon">🧭</div>
-    <div class="card-title" data-it="Escursioni & Dintorni" data-en="Excursions & Around" data-de="Ausflüge & Umgebung">Escursioni & Dintorni</div>
+    <div class="card-title" data-it="Escursioni & Dintorni" data-en="Excursions & Around" data-de="Ausflüge & Umgebung" data-ru="Экскурсии и окрестности">Escursioni & Dintorni</div>
     <div class="chevron">▾</div>
   </div>
   <div class="card-body">
-    <div class="note" data-it="Contenuto in arrivo — aggiungeremo presto i suggerimenti per le escursioni nella zona." data-en="Coming soon — we will add excursion suggestions for the area." data-de="Demnächst — wir fügen bald Ausflugstipps für die Umgebung hinzu.">Contenuto in arrivo — aggiungeremo presto i suggerimenti per le escursioni nella zona.</div>
+    <div class="note" data-it="Contenuto in arrivo — aggiungeremo presto i suggerimenti per le escursioni nella zona." data-en="Coming soon — we will add excursion suggestions for the area." data-de="Demnächst — wir fügen bald Ausflugstipps für die Umgebung hinzu." data-ru="Скоро — добавим рекомендации по экскурсиям в районе.">Contenuto in arrivo — aggiungeremo presto i suggerimenti per le escursioni nella zona.</div>
   </div>
 </div>
 
 <div class="card" id="s-emergency">
   <div class="card-hdr" onclick="tog('s-emergency')">
     <div class="card-icon">🚨</div>
-    <div class="card-title" data-it="Numeri utili & Emergenze" data-en="Useful numbers & Emergencies" data-de="Notrufnummern">Numeri utili & Emergenze</div>
+    <div class="card-title" data-it="Numeri utili & Emergenze" data-en="Useful numbers & Emergencies" data-de="Notrufnummern" data-ru="Полезные номера и экстренные службы">Numeri utili & Emergenze</div>
     <div class="chevron">▾</div>
   </div>
   <div class="card-body">
     <ul class="emg">
-      <li><span class="en" data-it="Ambulanza" data-en="Ambulance" data-de="Krankenwagen">Ambulanza</span><a class="en-num" href="tel:118">118</a></li>
-      <li><span class="en" data-it="Polizia" data-en="Police" data-de="Polizei">Polizia</span><a class="en-num" href="tel:113">113</a></li>
-      <li><span class="en" data-it="Pompieri" data-en="Firefighters" data-de="Feuerwehr">Pompieri</span><a class="en-num" href="tel:115">115</a></li>
-      <li><span class="en" data-it="Guardia Medica" data-en="Doctor on call" data-de="Notarzt">Guardia Medica</span><a class="en-num" href="tel:+393347487940">+39 334 748 79 40</a></li>
-      <li><span class="en" data-it="Farmacia · Borgo Hermada" data-en="Pharmacy · Borgo Hermada" data-de="Apotheke · Borgo Hermada">Farmacia · Borgo Hermada</span><a class="en-num" href="tel:+390773742047">+39 0773 74 20 47</a></li>
-      <li><span class="en" data-it="Ospedale · Terracina" data-en="Hospital · Terracina" data-de="Krankenhaus · Terracina">Ospedale · Terracina</span><a class="en-num" href="tel:+390773708100">+39 0773 70 81</a></li>
-      <li><span class="en" data-it="Guardiano residence" data-en="Residence guard" data-de="Wächter">Guardiano residence</span><a class="en-num" href="tel:+393776709356">+39 377 670 93 56</a></li>
+      <li><span class="en" data-it="Ambulanza" data-en="Ambulance" data-de="Krankenwagen" data-ru="Скорая помощь">Ambulanza</span><a class="en-num" href="tel:118">118</a></li>
+      <li><span class="en" data-it="Polizia" data-en="Police" data-de="Polizei" data-ru="Полиция">Polizia</span><a class="en-num" href="tel:113">113</a></li>
+      <li><span class="en" data-it="Pompieri" data-en="Firefighters" data-de="Feuerwehr" data-ru="Пожарные">Pompieri</span><a class="en-num" href="tel:115">115</a></li>
+      <li><span class="en" data-it="Guardia Medica" data-en="Doctor on call" data-de="Notarzt" data-ru="Дежурный врач">Guardia Medica</span><a class="en-num" href="tel:+393347487940">+39 334 748 79 40</a></li>
+      <li><span class="en" data-it="Farmacia · Borgo Hermada" data-en="Pharmacy · Borgo Hermada" data-de="Apotheke · Borgo Hermada" data-ru="Аптека · Борго-Эрмада">Farmacia · Borgo Hermada</span><a class="en-num" href="tel:+390773742047">+39 0773 74 20 47</a></li>
+      <li><span class="en" data-it="Ospedale · Terracina" data-en="Hospital · Terracina" data-de="Krankenhaus · Terracina" data-ru="Больница · Террачина">Ospedale · Terracina</span><a class="en-num" href="tel:+390773708100">+39 0773 70 81</a></li>
+      <li><span class="en" data-it="Guardiano residence" data-en="Residence guard" data-de="Wächter" data-ru="Охрана резиденции">Guardiano residence</span><a class="en-num" href="tel:+393776709356">+39 377 670 93 56</a></li>
       <li><span class="en">Relais Casa Moresca</span><a class="en-num" href="tel:+393791451623">+39 379 145 16 23</a></li>
     </ul>
-    <div class="note" style="margin-top:12px" data-it="Videosorveglianza H24 nelle aree comuni. Nessuna telecamera all'interno. In caso di blackout: illuminazione di emergenza automatica." data-en="24h CCTV on common roads. No cameras inside the Relais. Power outage: automatic emergency lighting." data-de="24h Videoüberwachung auf Gemeinschaftswegen. Keine Kameras im Relais. Stromausfall: automatische Notbeleuchtung.">Videosorveglianza H24 nelle aree comuni · Nessuna telecamera all'interno · Blackout: illuminazione di emergenza automatica</div>
+    <div class="note" style="margin-top:12px" data-it="Videosorveglianza H24 nelle aree comuni. Nessuna telecamera all'interno. In caso di blackout: illuminazione di emergenza automatica." data-en="24h CCTV on common roads. No cameras inside the Relais. Power outage: automatic emergency lighting." data-de="24h Videoüberwachung auf Gemeinschaftswegen. Keine Kameras im Relais. Stromausfall: automatische Notbeleuchtung." data-ru="Видеонаблюдение 24 ч на общих территориях. Камер внутри нет. При отключении электричества: автоматическое аварийное освещение.">Videosorveglianza H24 nelle aree comuni · Nessuna telecamera all'interno · Blackout: illuminazione di emergenza automatica</div>
   </div>
 </div>
 
@@ -479,13 +480,14 @@ body{font-family:'Raleway',sans-serif;color:var(--ink);min-height:100vh;overflow
 
 <script>
 const L={
-  it:{title:'Guida Ospiti',sub:'Benvenuti · Welcome · Willkommen'},
-  en:{title:'Guest Guide',sub:'Welcome · Benvenuti · Willkommen'},
-  de:{title:'Gästeführer',sub:'Willkommen · Welcome · Benvenuti'}
+  it:{title:'Guida Ospiti',sub:'Benvenuti · Welcome · Willkommen · Добро пожаловать'},
+  en:{title:'Guest Guide',sub:'Welcome · Benvenuti · Willkommen · Добро пожаловать'},
+  de:{title:'Gästeführer',sub:'Willkommen · Welcome · Benvenuti · Добро пожаловать'},
+  ru:{title:'Гид для гостей',sub:'Добро пожаловать · Welcome · Willkommen · Benvenuti'}
 };
 function setLang(l){
-  document.querySelectorAll('.lang-btn').forEach((b,i)=>{b.classList.toggle('active',['it','en','de'][i]===l)});
-  document.getElementById('hero-title').textContent=l==='it'?'Guida Ospiti':l==='en'?'Guest Guide':'Gästeführer';
+  document.querySelectorAll('.lang-btn').forEach((b,i)=>{b.classList.toggle('active',['it','en','de','ru'][i]===l)});
+  document.getElementById('hero-title').textContent=L[l]?L[l].title:'Guida Ospiti';
   document.getElementById('hero-sub').textContent=L[l].sub;
   document.querySelectorAll('[data-'+l+']').forEach(el=>{el.textContent=el.getAttribute('data-'+l)});
 }
