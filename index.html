@@ -527,16 +527,19 @@ body{font-family:'Raleway',sans-serif;color:var(--ink);min-height:100vh;overflow
 <script>
 const WMO={0:'☀️',1:'🌤️',2:'⛅',3:'🌥️',45:'🌫️',48:'🌫️',51:'🌦️',53:'🌦️',55:'🌦️',61:'🌧️',63:'🌧️',65:'🌧️',71:'🌨️',73:'🌨️',75:'🌨️',80:'🌧️',81:'🌧️',82:'🌧️',95:'⛈️',96:'⛈️',99:'⛈️'};
 const DOW={it:['Dom','Lun','Mar','Mer','Gio','Ven','Sab'],en:['Sun','Mon','Tue','Wed','Thu','Fri','Sat'],de:['So','Mo','Di','Mi','Do','Fr','Sa'],ru:['Вс','Пн','Вт','Ср','Чт','Пт','Сб']};
+let meteoData=null;
 async function loadMeteo(){
   try{
     const r=await fetch('https://api.open-meteo.com/v1/forecast?latitude=41.28&longitude=13.25&daily=temperature_2m_max,temperature_2m_min,precipitation_sum,weathercode&timezone=Europe/Rome&forecast_days=5');
     const d=await r.json();
-    renderMeteo(d.daily);
+    meteoData=d.daily;
+    renderMeteo(meteoData);
   }catch(e){
     document.getElementById('meteo-content').innerHTML='<div style="color:var(--muted);font-size:12px;text-align:center;padding:8px 0">Dati non disponibili</div>';
   }
 }
 function renderMeteo(d){
+  if(!d)return;
   const lang=currentLang||'it';
   const days=DOW[lang]||DOW.it;
   let html='<div class="meteo-grid">';
@@ -568,6 +571,7 @@ const L={
 let currentLang='it';
 function setLang(l){
   currentLang=l;
+  renderMeteo(meteoData);
   document.querySelectorAll('.lang-btn').forEach((b,i)=>{b.classList.toggle('active',['it','en','de','ru'][i]===l)});
   document.getElementById('hero-title').textContent=L[l]?L[l].title:'Guida Ospiti';
   document.getElementById('hero-sub').textContent=L[l].sub;
