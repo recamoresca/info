@@ -9,6 +9,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Casa Moresca">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
 <style>
@@ -425,6 +426,37 @@ body{font-family:'Raleway',sans-serif;color:var(--ink);min-height:100vh;overflow
   </div>
 </div>
 
+<div class="card" id="s-supermarkets">
+  <div class="card-hdr" onclick="tog('s-supermarkets')">
+    <div class="card-icon">🛒</div>
+    <div class="card-title" data-it="Supermercati" data-en="Supermarkets" data-de="Supermärkte" data-ru="Супермаркеты">Supermercati</div>
+    <div class="chevron">▾</div>
+  </div>
+  <div class="card-body">
+    <div id="supermap" style="height:220px;border-radius:10px;margin:12px 0;z-index:1"></div>
+    <div class="row">
+      <div class="row-label">Porto Badino</div>
+      <div class="row-val">
+        <strong>Expo Supermarket</strong> · Via Badino Vecchia Km 5.4<br>
+        <span style="font-size:11px;color:var(--muted)" data-it="Lun–Ven e Dom 08:00–13:00 / 16:30–20:30 · Sab fino a mezzanotte" data-en="Mon–Fri & Sun 08:00–13:00 / 16:30–20:30 · Sat until midnight" data-de="Mo–Fr & So 08:00–13:00 / 16:30–20:30 · Sa bis Mitternacht" data-ru="Пн–Пт и Вс 08:00–13:00 / 16:30–20:30 · Сб до полуночи">Lun–Ven e Dom 08:00–13:00 / 16:30–20:30 · Sab fino a mezzanotte</span><br><br>
+        <strong>CONAD Superstore</strong> · Le Porte del Sud<br>
+        <span style="font-size:11px;color:var(--muted)" data-it="Tutti i giorni 07:30–22:00" data-en="Every day 07:30–22:00" data-de="Täglich 07:30–22:00" data-ru="Каждый день 07:30–22:00">Tutti i giorni 07:30–22:00</span><br><br>
+        <strong>CONAD</strong> · Via Badino 119<br>
+        <span style="font-size:11px;color:var(--muted)" data-it="Tutti i giorni 08:00–21:00" data-en="Every day 08:00–21:00" data-de="Täglich 08:00–21:00" data-ru="Каждый день 08:00–21:00">Tutti i giorni 08:00–21:00</span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="row-label">Borgo Hermada</div>
+      <div class="row-val">
+        <strong>CONAD</strong> · Via Cesare Battisti 19<br>
+        <span style="font-size:11px;color:var(--muted)" data-it="Lun–Sab 08:00–13:00 / 16:00–19:30 (Gio solo mattina) · Dom chiuso" data-en="Mon–Sat 08:00–13:00 / 16:00–19:30 (Thu morning only) · Sun closed" data-de="Mo–Sa 08:00–13:00 / 16:00–19:30 (Do nur morgens) · So geschlossen" data-ru="Пн–Сб 08:00–13:00 / 16:00–19:30 (Чт только утром) · Вс закрыто">Lun–Sab 08:00–13:00 / 16:00–19:30 (Gio solo mattina) · Dom chiuso</span><br><br>
+        <strong>CONAD</strong> · Via Pantani da Basso<br>
+        <span style="font-size:11px;color:var(--muted)" data-it="Lun–Sab 08:00–20:00 · Dom chiuso" data-en="Mon–Sat 08:00–20:00 · Sun closed" data-de="Mo–Sa 08:00–20:00 · So geschlossen" data-ru="Пн–Сб 08:00–20:00 · Вс закрыто">Lun–Sab 08:00–20:00 · Dom chiuso</span>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="card" id="s-around">
   <div class="card-hdr" onclick="tog('s-around')">
     <div class="card-icon">🗺️</div>
@@ -645,6 +677,31 @@ function cp(txt){
     document.body.appendChild(t);setTimeout(()=>t.remove(),2000);
   });
 }
+// Mappa supermercati
+function initSupermap(){
+  if(window._supermapInit)return;
+  window._supermapInit=true;
+  const script=document.createElement('script');
+  script.src='https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
+  script.onload=()=>{
+    const map=L.map('supermap',{zoomControl:true,scrollWheelZoom:false}).setView([41.291,13.200],12);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'© OpenStreetMap'}).addTo(map);
+    const icon=L.divIcon({className:'',html:'<div style="background:#2C2118;color:white;border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-size:14px;box-shadow:0 2px 6px rgba(0,0,0,.3)">🛒</div>',iconSize:[28,28],iconAnchor:[14,14]});
+    const shops=[
+      [41.282864,13.188612,'Expo Supermarket · Via Badino Vecchia Km 5.4'],
+      [41.287598,13.222716,'CONAD Superstore · Le Porte del Sud'],
+      [41.289918,13.237199,'CONAD · Via Badino 119'],
+      [41.306497,13.174538,'CONAD · Via Cesare Battisti 19, Borgo Hermada'],
+      [41.290993,13.188320,'CONAD · Via Pantani da Basso, Borgo Hermada']
+    ];
+    shops.forEach(([lat,lng,name])=>L.marker([lat,lng],{icon}).addTo(map).bindPopup(name));
+  };
+  document.head.appendChild(script);
+}
+document.getElementById('s-supermarkets').querySelector('.card-hdr').addEventListener('click',()=>{
+  setTimeout(initSupermap,50);
+});
+
 let dp;
 window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();dp=e;document.getElementById('install-bar').style.display='flex';});
 document.getElementById('install-btn')?.addEventListener('click',async()=>{if(!dp)return;dp.prompt();await dp.userChoice;dp=null;document.getElementById('install-bar').style.display='none';});
