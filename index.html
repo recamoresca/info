@@ -9,7 +9,6 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Casa Moresca">
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
 <style>
@@ -433,7 +432,7 @@ body{font-family:'Raleway',sans-serif;color:var(--ink);min-height:100vh;overflow
     <div class="chevron">▾</div>
   </div>
   <div class="card-body">
-    <div id="supermap" style="height:220px;border-radius:10px;margin:12px 0;z-index:1"></div>
+    <a class="map-btn" href="https://www.google.com/maps/search/supermercati/@41.291,13.200,13z" target="_blank">🗺️ <span data-it="Apri mappa supermercati" data-en="Open supermarkets map" data-de="Supermarktkarte öffnen" data-ru="Открыть карту супермаркетов">Apri mappa supermercati</span></a>
     <div class="row">
       <div class="row-label">Porto Badino</div>
       <div class="row-val">
@@ -677,27 +676,6 @@ function cp(txt){
     document.body.appendChild(t);setTimeout(()=>t.remove(),2000);
   });
 }
-// Mappa supermercati
-let _smap=null;
-const _ljs=document.createElement('script');
-_ljs.src='https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
-_ljs.onload=()=>{
-  _smap=L.map('supermap',{zoomControl:true,scrollWheelZoom:false}).setView([41.291,13.200],12);
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'© OpenStreetMap'}).addTo(_smap);
-  const icon=L.divIcon({className:'',html:'<div style="background:#2C2118;color:white;border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-size:14px;box-shadow:0 2px 6px rgba(0,0,0,.3)">🛒</div>',iconSize:[28,28],iconAnchor:[14,14]});
-  const shops=[
-    [41.282864,13.188612,'Expo Supermarket · Via Badino Vecchia Km 5.4'],
-    [41.287598,13.222716,'CONAD Superstore · Le Porte del Sud'],
-    [41.289918,13.237199,'CONAD · Via Badino 119'],
-    [41.306497,13.174538,'CONAD · Via Cesare Battisti 19, Borgo Hermada'],
-    [41.290993,13.188320,'CONAD · Via Pantani da Basso, Borgo Hermada']
-  ];
-  shops.forEach(([lat,lng,name])=>L.marker([lat,lng],{icon}).addTo(_smap).bindPopup(name));
-};
-document.head.appendChild(_ljs);
-document.getElementById('s-supermarkets').querySelector('.card-hdr').addEventListener('click',()=>{
-  setTimeout(()=>{if(_smap)_smap.invalidateSize()},150);
-});
 
 let dp;
 window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();dp=e;document.getElementById('install-bar').style.display='flex';});
