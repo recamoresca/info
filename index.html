@@ -151,15 +151,24 @@ body{font-family:'Raleway',sans-serif;color:var(--ink);min-height:100vh;overflow
   </div>
 </div>
 
-<div class="card open" id="s-location">
+<div class="card" id="s-location">
   <div class="card-hdr" onclick="tog('s-location')">
     <div class="card-icon">📍</div>
     <div class="card-title" data-it="Dove siamo" data-en="Where we are" data-de="Wo wir sind" data-ru="Где мы находимся">Dove siamo</div>
     <div class="chevron">▾</div>
   </div>
   <div class="card-body">
-    <div style="height:240px;border-radius:10px;overflow:hidden;margin:12px 0">
-      <iframe src="https://maps.google.com/maps?q=Via+Didone+9+Porto+Badino+Terracina&output=embed&z=17" style="border:none;width:100%;height:100%" loading="lazy" allowfullscreen></iframe>
+    <div class="row">
+      <div class="row-label" data-it="Indirizzo" data-en="Address" data-de="Adresse" data-ru="Адрес">Indirizzo</div>
+      <div class="row-val"><strong>Via Didone 9</strong><br>Porto Badino · Terracina (LT)</div>
+    </div>
+    <div class="row">
+      <div class="row-label" data-it="Accesso" data-en="Access" data-de="Zugang" data-ru="Доступ">Accesso</div>
+      <div class="row-val" data-it="Cancello automatico. Il codice di accesso è stato comunicato al check-in." data-en="Automatic gate. The access code was provided at check-in." data-de="Automatisches Tor. Der Zugangscode wurde beim Check-in mitgeteilt." data-ru="Автоматические ворота. Код доступа был сообщён при заселении.">Cancello automatico · Codice comunicato al check-in</div>
+    </div>
+    <div class="row">
+      <div class="row-label" data-it="Parcheggio" data-en="Parking" data-de="Parken" data-ru="Парковка">Parcheggio</div>
+      <div class="row-val" data-it="Parcheggio esterno in prossimità della villa. Vietato parcheggiare nel giardino del Relais." data-en="Outdoor parking near the villa. Do not park in the Relais garden." data-de="Außenparkplatz in der Nähe der Villa. Nicht im Garten parken." data-ru="Парковка снаружи рядом с виллой. Въезд в сад Релейса запрещён.">Esterno · Vietato nel giardino</div>
     </div>
     <a class="map-btn" href="https://maps.google.com/?q=Via+Didone+9+Porto+Badino+Terracina" target="_blank">📍 <span data-it="Apri in Google Maps" data-en="Open in Google Maps" data-de="In Google Maps öffnen" data-ru="Открыть в Google Maps">Apri in Google Maps</span></a>
   </div>
