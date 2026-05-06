@@ -9,7 +9,6 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Casa Moresca">
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
 <style>
@@ -159,7 +158,9 @@ body{font-family:'Raleway',sans-serif;color:var(--ink);min-height:100vh;overflow
     <div class="chevron">▾</div>
   </div>
   <div class="card-body">
-    <div id="locationmap" style="height:240px;border-radius:10px;margin:12px 0;z-index:1"></div>
+    <div style="height:240px;border-radius:10px;overflow:hidden;margin:12px 0">
+      <iframe src="https://maps.google.com/maps?q=Via+Didone+9+Porto+Badino+Terracina&output=embed&z=17" style="border:none;width:100%;height:100%" loading="lazy" allowfullscreen></iframe>
+    </div>
     <a class="map-btn" href="https://maps.google.com/?q=Via+Didone+9+Porto+Badino+Terracina" target="_blank">📍 <span data-it="Apri in Google Maps" data-en="Open in Google Maps" data-de="In Google Maps öffnen" data-ru="Открыть в Google Maps">Apri in Google Maps</span></a>
   </div>
 </div>
@@ -724,21 +725,6 @@ function cp(txt){
     document.body.appendChild(t);setTimeout(()=>t.remove(),2000);
   });
 }
-
-// Mappa Dove siamo
-const _ljs2=document.createElement('script');
-_ljs2.src='https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
-_ljs2.onload=()=>{
-  const LAT=41.2821, LNG=13.1815;
-  const lmap=L.map('locationmap',{zoomControl:true,scrollWheelZoom:false}).setView([LAT,LNG],16);
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'© OpenStreetMap'}).addTo(lmap);
-  const icon=L.divIcon({className:'',html:'<div style="background:var(--marrone,#2C2118);color:white;border-radius:50% 50% 50% 0;width:32px;height:32px;display:flex;align-items:center;justify-content:center;font-size:16px;box-shadow:0 2px 8px rgba(0,0,0,.4);transform:rotate(-45deg)"><span style="transform:rotate(45deg)">🏡</span></div>',iconSize:[32,32],iconAnchor:[16,32]});
-  L.marker([LAT,LNG],{icon}).addTo(lmap).bindPopup('<strong>Relais Casa Moresca</strong><br>Via Didone 9, Porto Badino').openPopup();
-};
-document.head.appendChild(_ljs2);
-document.getElementById('s-location').querySelector('.card-hdr').addEventListener('click',()=>{
-  setTimeout(()=>{if(window.L&&document.getElementById('locationmap')._leaflet_id){}},150);
-});
 
 let dp;
 window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();dp=e;document.getElementById('install-bar').style.display='flex';});
