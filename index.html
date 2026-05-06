@@ -734,15 +734,16 @@ body{font-family:'Raleway',sans-serif;color:var(--ink);min-height:100vh;overflow
 .meteo-sea{font-size:9px;color:#4A90D9;margin-top:4px;border-top:1px solid var(--calce3);padding-top:4px}
 .meteo-wtemp{font-size:9px;color:var(--muted);margin-top:1px}
 .meteo-loc{font-size:9px;color:var(--muted);text-align:center;margin-top:6px;letter-spacing:.08em}
-.waste-tonight-box{display:flex;align-items:center;gap:12px;background:var(--calce);border:2px solid var(--marrone);border-radius:12px;padding:14px 16px;margin-bottom:12px;}
-.waste-tonight-ico{font-size:28px;line-height:1;flex-shrink:0;}
-.waste-tonight-label{font-size:15px;font-weight:700;color:var(--marrone);line-height:1.3;}
-.waste-tonight-bin{font-size:11px;color:var(--muted);margin-top:4px;}
-.waste-none-msg{text-align:center;color:var(--muted);font-size:13px;padding:14px 0;}
-.waste-week{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;margin-top:4px;}
-.waste-wday{background:var(--calce);border-radius:8px;padding:6px 2px;text-align:center;border:1.5px solid var(--calce3);}
-.waste-wday.tonight{border-color:var(--marrone);background:var(--calce2);}
-.waste-wday-name{font-size:8px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--sabbia);margin-bottom:3px;}
+.waste-card-inner{border:4px solid var(--calce3);border-radius:16px;padding:22px 16px 18px;text-align:center;transition:border-color .3s;margin-bottom:14px;}
+.waste-card-sub{font-size:9px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--sabbia);margin-bottom:10px;}
+.waste-card-ico{font-size:52px;line-height:1;margin-bottom:10px;}
+.waste-card-name{font-size:19px;font-weight:800;color:var(--marrone);margin-bottom:4px;letter-spacing:.01em;}
+.waste-card-bin{font-size:11px;color:var(--muted);}
+.waste-none-msg{text-align:center;color:var(--muted);font-size:13px;padding:20px 0;}
+.waste-week{display:flex;gap:4px;margin-bottom:12px;}
+.waste-wday{flex:1;background:var(--calce);border-radius:8px;padding:6px 2px;text-align:center;border:1.5px solid var(--calce3);}
+.waste-wday.tonight{background:var(--calce2);}
+.waste-wday-name{font-size:7px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--sabbia);margin-bottom:3px;}
 .waste-wday-ico{font-size:13px;}
 </style>
 <script>
@@ -834,6 +835,7 @@ function getWaste(dow,month){
   if(dow===0)return(month===6||month===7)?{icon:'🟡',it:'Plastica e Metalli',en:'Plastic & Metal',de:'Plastik & Metall',ru:'Пластик и металл',bin_it:'Coperchio giallo',bin_en:'Yellow bin',bin_de:'Gelber Eimer',bin_ru:'Жёлтая крышка'}:null;
   return WASTE[dow]||null;
 }
+const WASTE_COLORS={'🟤':'#8B5E3C','⚫':'#666','🟡':'#C8880A','🔵':'#2E6DB4'};
 function renderWasteTonight(){
   const el=document.getElementById('waste-tonight-content');
   const wg=document.getElementById('waste-week-grid');
@@ -842,9 +844,10 @@ function renderWasteTonight(){
   const now=new Date();
   const tom=new Date(now);tom.setDate(tom.getDate()+1);
   const w=getWaste(tom.getDay(),tom.getMonth());
-  const hdr={it:'Stasera esponi',en:'Tonight put out',de:'Heute Abend',ru:'Сегодня вечером'};
+  const hdr={it:'Esponi stasera',en:'Put out tonight',de:'Heute Abend rausstellen',ru:'Выставить сегодня вечером'};
   if(w){
-    el.innerHTML=`<div style="font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--sabbia);margin-bottom:8px">${hdr[l]||hdr.it}</div><div class="waste-tonight-box"><div class="waste-tonight-ico">${w.icon}</div><div><div class="waste-tonight-label">${w[l]||w.it}</div><div class="waste-tonight-bin">${w['bin_'+l]||w.bin_it}</div></div></div>`;
+    const color=WASTE_COLORS[w.icon]||'var(--marrone)';
+    el.innerHTML=`<div class="waste-card-inner" style="border-color:${color}"><div class="waste-card-sub">${hdr[l]||hdr.it}</div><div class="waste-card-ico">${w.icon}</div><div class="waste-card-name">${w[l]||w.it}</div><div class="waste-card-bin">${w['bin_'+l]||w.bin_it}</div></div>`;
   }else{
     const msg={it:'Nessuna raccolta domani 🎉',en:'No collection tomorrow 🎉',de:'Morgen keine Abholung 🎉',ru:'Завтра вывоза нет 🎉'};
     el.innerHTML=`<div class="waste-none-msg">${msg[l]||msg.it}</div>`;
@@ -852,7 +855,13 @@ function renderWasteTonight(){
   if(wg){
     const tomDow=tom.getDay(),m=now.getMonth();
     const names=WASTE_DOW[l]||WASTE_DOW.it;
-    wg.innerHTML=Array.from({length:7},(_,d)=>{const ww=getWaste(d,m);return`<div class="waste-wday${d===tomDow?' tonight':''}"><div class="waste-wday-name">${names[d]}</div><div class="waste-wday-ico">${ww?ww.icon:'—'}</div></div>`;}).join('');
+    const color=w?(WASTE_COLORS[w.icon]||'var(--marrone)'):'var(--calce3)';
+    wg.innerHTML=Array.from({length:7},(_,d)=>{
+      const ww=getWaste(d,m);
+      const isT=d===tomDow;
+      const style=isT?`style="border-color:${color}"`:'';
+      return`<div class="waste-wday${isT?' tonight':''}" ${style}><div class="waste-wday-name">${names[d]}</div><div class="waste-wday-ico">${ww?ww.icon:'—'}</div></div>`;
+    }).join('');
   }
 }
 document.addEventListener('DOMContentLoaded',renderWasteTonight);
