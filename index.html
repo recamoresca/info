@@ -160,6 +160,19 @@ body{font-family:'Raleway',sans-serif;color:var(--ink);min-height:100vh;overflow
   </div>
 </div>
 
+<div class="card open" id="s-waste">
+  <div class="card-hdr" onclick="tog('s-waste')">
+    <div class="card-icon">🌙</div>
+    <div class="card-title" data-it="Raccolta differenziata" data-en="Waste collection" data-de="Mülltrennung" data-ru="Вывоз мусора">Raccolta differenziata</div>
+    <div class="chevron">▾</div>
+  </div>
+  <div class="card-body">
+    <div id="waste-tonight-content"></div>
+    <div class="waste-week" id="waste-week-grid" style="margin-bottom:12px"></div>
+    <div class="note" data-it="Sacchi fuori dal cancello la sera prima della raccolta." data-en="Bags outside the gate the evening before collection." data-de="Taschen am Vorabend vor das Tor stellen." data-ru="Мешки за ворота накануне вывоза.">🗑 Sacchi fuori dal cancello la sera prima della raccolta</div>
+  </div>
+</div>
+
 <div class="card" id="s-location">
   <div class="card-hdr" onclick="tog('s-location')">
     <div class="card-icon">📍</div>
@@ -721,6 +734,16 @@ body{font-family:'Raleway',sans-serif;color:var(--ink);min-height:100vh;overflow
 .meteo-sea{font-size:9px;color:#4A90D9;margin-top:4px;border-top:1px solid var(--calce3);padding-top:4px}
 .meteo-wtemp{font-size:9px;color:var(--muted);margin-top:1px}
 .meteo-loc{font-size:9px;color:var(--muted);text-align:center;margin-top:6px;letter-spacing:.08em}
+.waste-tonight-box{display:flex;align-items:center;gap:12px;background:var(--calce);border:2px solid var(--marrone);border-radius:12px;padding:14px 16px;margin-bottom:12px;}
+.waste-tonight-ico{font-size:28px;line-height:1;flex-shrink:0;}
+.waste-tonight-label{font-size:15px;font-weight:700;color:var(--marrone);line-height:1.3;}
+.waste-tonight-bin{font-size:11px;color:var(--muted);margin-top:4px;}
+.waste-none-msg{text-align:center;color:var(--muted);font-size:13px;padding:14px 0;}
+.waste-week{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;margin-top:4px;}
+.waste-wday{background:var(--calce);border-radius:8px;padding:6px 2px;text-align:center;border:1.5px solid var(--calce3);}
+.waste-wday.tonight{border-color:var(--marrone);background:var(--calce2);}
+.waste-wday-name{font-size:8px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--sabbia);margin-bottom:3px;}
+.waste-wday-ico{font-size:13px;}
 </style>
 <script>
 const WMO={0:'☀️',1:'🌤️',2:'⛅',3:'🌥️',45:'🌫️',48:'🌫️',51:'🌦️',53:'🌦️',55:'🌦️',61:'🌧️',63:'🌧️',65:'🌧️',71:'🌨️',73:'🌨️',75:'🌨️',80:'🌧️',81:'🌧️',82:'🌧️',95:'⛈️',96:'⛈️',99:'⛈️'};
@@ -798,9 +821,46 @@ function renderCh(){
 }
 document.addEventListener('DOMContentLoaded',renderCh);
 
+const WASTE={
+  1:{icon:'🟤',it:'Organico',en:'Organic',de:'Bioabfall',ru:'Органические',bin_it:'Coperchio marrone',bin_en:'Brown bin',bin_de:'Brauner Eimer',bin_ru:'Коричневая крышка'},
+  2:{icon:'⚫',it:'Secco residuo',en:'Residual waste',de:'Restmüll',ru:'Смешанные отходы',bin_it:'Coperchio grigio',bin_en:'Grey bin',bin_de:'Grauer Eimer',bin_ru:'Серая крышка'},
+  3:{icon:'🟤',it:'Organico',en:'Organic',de:'Bioabfall',ru:'Органические',bin_it:'Coperchio marrone',bin_en:'Brown bin',bin_de:'Brauner Eimer',bin_ru:'Коричневая крышка'},
+  4:{icon:'🟡',it:'Plastica e Metalli',en:'Plastic & Metal',de:'Plastik & Metall',ru:'Пластик и металл',bin_it:'Coperchio giallo',bin_en:'Yellow bin',bin_de:'Gelber Eimer',bin_ru:'Жёлтая крышка'},
+  5:{icon:'🔵',it:'Carta e Cartone',en:'Paper & Cardboard',de:'Papier & Karton',ru:'Бумага и картон',bin_it:'Coperchio blu',bin_en:'Blue bin',bin_de:'Blauer Eimer',bin_ru:'Синяя крышка'},
+  6:{icon:'🟤',it:'Organico',en:'Organic',de:'Bioabfall',ru:'Органические',bin_it:'Coperchio marrone',bin_en:'Brown bin',bin_de:'Brauner Eimer',bin_ru:'Коричневая крышка'}
+};
+const WASTE_DOW={it:['Dom','Lun','Mar','Mer','Gio','Ven','Sab'],en:['Sun','Mon','Tue','Wed','Thu','Fri','Sat'],de:['So','Mo','Di','Mi','Do','Fr','Sa'],ru:['Вс','Пн','Вт','Ср','Чт','Пт','Сб']};
+function getWaste(dow,month){
+  if(dow===0)return(month===6||month===7)?{icon:'🟡',it:'Plastica e Metalli',en:'Plastic & Metal',de:'Plastik & Metall',ru:'Пластик и металл',bin_it:'Coperchio giallo',bin_en:'Yellow bin',bin_de:'Gelber Eimer',bin_ru:'Жёлтая крышка'}:null;
+  return WASTE[dow]||null;
+}
+function renderWasteTonight(){
+  const el=document.getElementById('waste-tonight-content');
+  const wg=document.getElementById('waste-week-grid');
+  if(!el)return;
+  const l=currentLang||'it';
+  const now=new Date();
+  const tom=new Date(now);tom.setDate(tom.getDate()+1);
+  const w=getWaste(tom.getDay(),tom.getMonth());
+  const hdr={it:'Stasera esponi',en:'Tonight put out',de:'Heute Abend',ru:'Сегодня вечером'};
+  if(w){
+    el.innerHTML=`<div style="font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--sabbia);margin-bottom:8px">${hdr[l]||hdr.it}</div><div class="waste-tonight-box"><div class="waste-tonight-ico">${w.icon}</div><div><div class="waste-tonight-label">${w[l]||w.it}</div><div class="waste-tonight-bin">${w['bin_'+l]||w.bin_it}</div></div></div>`;
+  }else{
+    const msg={it:'Nessuna raccolta domani 🎉',en:'No collection tomorrow 🎉',de:'Morgen keine Abholung 🎉',ru:'Завтра вывоза нет 🎉'};
+    el.innerHTML=`<div class="waste-none-msg">${msg[l]||msg.it}</div>`;
+  }
+  if(wg){
+    const tomDow=tom.getDay(),m=now.getMonth();
+    const names=WASTE_DOW[l]||WASTE_DOW.it;
+    wg.innerHTML=Array.from({length:7},(_,d)=>{const ww=getWaste(d,m);return`<div class="waste-wday${d===tomDow?' tonight':''}"><div class="waste-wday-name">${names[d]}</div><div class="waste-wday-ico">${ww?ww.icon:'—'}</div></div>`;}).join('');
+  }
+}
+document.addEventListener('DOMContentLoaded',renderWasteTonight);
+
 function setLang(l){
   currentLang=l;
   renderMeteo(meteoData,marineData);
+  renderWasteTonight();
   document.querySelectorAll('.lang-btn').forEach((b,i)=>{b.classList.toggle('active',['it','en','de','ru'][i]===l)});
   document.getElementById('hero-title').textContent=L[l]?L[l].title:'Guida Ospiti';
   document.getElementById('hero-sub').textContent=L[l].sub;
