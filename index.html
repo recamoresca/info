@@ -637,23 +637,30 @@ body{font-family:'Raleway',sans-serif;color:var(--ink);min-height:100vh;overflow
 .meteo-max{font-size:14px;font-weight:700;color:var(--marrone)}
 .meteo-min{font-size:11px;color:var(--muted);margin-top:1px}
 .meteo-prec{font-size:9px;color:var(--oliva);margin-top:3px}
+.meteo-sea{font-size:9px;color:#4A90D9;margin-top:4px;border-top:1px solid var(--calce3);padding-top:4px}
+.meteo-wtemp{font-size:9px;color:var(--muted);margin-top:1px}
 .meteo-loc{font-size:9px;color:var(--muted);text-align:center;margin-top:6px;letter-spacing:.08em}
 </style>
 <script>
 const WMO={0:'☀️',1:'🌤️',2:'⛅',3:'🌥️',45:'🌫️',48:'🌫️',51:'🌦️',53:'🌦️',55:'🌦️',61:'🌧️',63:'🌧️',65:'🌧️',71:'🌨️',73:'🌨️',75:'🌨️',80:'🌧️',81:'🌧️',82:'🌧️',95:'⛈️',96:'⛈️',99:'⛈️'};
 const DOW={it:['Dom','Lun','Mar','Mer','Gio','Ven','Sab'],en:['Sun','Mon','Tue','Wed','Thu','Fri','Sat'],de:['So','Mo','Di','Mi','Do','Fr','Sa'],ru:['Вс','Пн','Вт','Ср','Чт','Пт','Сб']};
 let meteoData=null;
+let marineData=null;
+function waveIco(h){return h<0.3?'🪨':h<0.8?'〰️':h<1.5?'🌊':'⚠️';}
 async function loadMeteo(){
   try{
-    const r=await fetch('https://api.open-meteo.com/v1/forecast?latitude=41.28&longitude=13.25&daily=temperature_2m_max,temperature_2m_min,precipitation_sum,weathercode&timezone=Europe/Rome&forecast_days=5');
-    const d=await r.json();
-    meteoData=d.daily;
-    renderMeteo(meteoData);
+    const [rw,rm]=await Promise.all([
+      fetch('https://api.open-meteo.com/v1/forecast?latitude=41.28&longitude=13.25&daily=temperature_2m_max,temperature_2m_min,precipitation_sum,weathercode&timezone=Europe/Rome&forecast_days=5'),
+      fetch('https://marine-api.open-meteo.com/v1/marine?latitude=41.28&longitude=13.19&daily=wave_height_max,sea_surface_temperature_max&timezone=Europe/Rome&forecast_days=5')
+    ]);
+    const dw=await rw.json(); const dm=await rm.json();
+    meteoData=dw.daily; marineData=dm.daily;
+    renderMeteo(meteoData,marineData);
   }catch(e){
     document.getElementById('meteo-content').innerHTML='<div style="color:var(--muted);font-size:12px;text-align:center;padding:8px 0">Dati non disponibili</div>';
   }
 }
-function renderMeteo(d){
+function renderMeteo(d,m){
   if(!d)return;
   const lang=currentLang||'it';
   const days=DOW[lang]||DOW.it;
@@ -665,12 +672,16 @@ function renderMeteo(d){
     const max=Math.round(d.temperature_2m_max[i]);
     const min=Math.round(d.temperature_2m_min[i]);
     const prec=d.precipitation_sum[i];
+    const wave=m&&m.wave_height_max?m.wave_height_max[i]:null;
+    const wtemp=m&&m.sea_surface_temperature_max?Math.round(m.sea_surface_temperature_max[i]):null;
     html+=`<div class="meteo-day">
       <div class="meteo-dow">${dow}</div>
       <div class="meteo-ico">${ico}</div>
       <div class="meteo-max">${max}°</div>
       <div class="meteo-min">${min}°</div>
       ${prec>0?`<div class="meteo-prec">💧${prec}mm</div>`:''}
+      ${wave!=null?`<div class="meteo-sea">${waveIco(wave)} ${wave.toFixed(1)}m</div>`:''}
+      ${wtemp!=null?`<div class="meteo-wtemp">🌡 ${wtemp}°</div>`:''}
     </div>`;
   }
   html+='</div><div class="meteo-loc">Porto Badino · Terracina</div>';
@@ -686,7 +697,7 @@ const L={
 let currentLang='it';
 function setLang(l){
   currentLang=l;
-  renderMeteo(meteoData);
+  renderMeteo(meteoData,marineData);
   document.querySelectorAll('.lang-btn').forEach((b,i)=>{b.classList.toggle('active',['it','en','de','ru'][i]===l)});
   document.getElementById('hero-title').textContent=L[l]?L[l].title:'Guida Ospiti';
   document.getElementById('hero-sub').textContent=L[l].sub;
