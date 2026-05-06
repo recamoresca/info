@@ -151,6 +151,18 @@ body{font-family:'Raleway',sans-serif;color:var(--ink);min-height:100vh;overflow
   </div>
 </div>
 
+<div class="card" id="s-location">
+  <div class="card-hdr" onclick="tog('s-location')">
+    <div class="card-icon">📍</div>
+    <div class="card-title" data-it="Dove siamo" data-en="Where we are" data-de="Wo wir sind" data-ru="Где мы находимся">Dove siamo</div>
+    <div class="chevron">▾</div>
+  </div>
+  <div class="card-body">
+    <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=13.168%2C41.268%2C13.208%2C41.292&layer=mapnik&marker=41.2793%2C13.1883" style="border:none;width:100%;height:240px;border-radius:10px;display:block;margin:12px 0" loading="lazy"></iframe>
+    <a class="map-btn" href="https://maps.google.com/?q=Via+Didone+9+Porto+Badino+Terracina" target="_blank">📍 <span data-it="Apri in Google Maps" data-en="Open in Google Maps" data-de="In Google Maps öffnen" data-ru="Открыть в Google Maps">Apri in Google Maps</span></a>
+  </div>
+</div>
+
 <div class="card open" id="s-wifi">
   <div class="card-hdr" onclick="tog('s-wifi')">
     <div class="card-icon">📶</div>
