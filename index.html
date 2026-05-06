@@ -112,6 +112,15 @@ body{font-family:'Raleway',sans-serif;color:var(--ink);min-height:100vh;overflow
 
 .toast{position:fixed;bottom:52px;left:50%;transform:translateX(-50%);background:var(--oliva);color:white;padding:10px 22px;border-radius:24px;font-family:'Raleway',sans-serif;font-size:12px;font-weight:700;letter-spacing:.06em;z-index:999;animation:fadeup .25s ease;pointer-events:none;}
 @keyframes fadeup{from{opacity:0;transform:translateX(-50%) translateY(8px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
+
+.ch-filter{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px;}
+.ch-btn{background:var(--calce2);color:var(--marrone);border:1.5px solid var(--calce3);border-radius:8px;padding:5px 11px;font-family:'Raleway',sans-serif;font-size:11px;font-weight:700;letter-spacing:.05em;cursor:pointer;transition:all .18s;}
+.ch-btn.active{background:var(--marrone);color:white;border-color:var(--marrone);}
+.ch-list{max-height:260px;overflow-y:auto;border:1.5px solid var(--calce3);border-radius:10px;background:var(--calce2);}
+.ch-item{display:flex;align-items:center;gap:10px;padding:7px 12px;border-bottom:1px solid var(--calce3);}
+.ch-item:last-child{border-bottom:none;}
+.ch-num{min-width:28px;font-size:11px;font-weight:700;color:var(--sabbia);text-align:right;}
+.ch-name{font-size:12px;color:var(--marrone);font-weight:600;}
 </style>
 </head>
 <body>
@@ -160,17 +169,9 @@ body{font-family:'Raleway',sans-serif;color:var(--ink);min-height:100vh;overflow
   <div class="card-body">
     <div class="row">
       <div class="row-label" data-it="Indirizzo" data-en="Address" data-de="Adresse" data-ru="Адрес">Indirizzo</div>
-      <div class="row-val"><strong>Via Didone 9</strong><br>Porto Badino · Terracina (LT)</div>
+      <div class="row-val"><strong>Lido di Enea – Via Didone, 9</strong><br>04019 Terracina (LT)</div>
     </div>
-    <div class="row">
-      <div class="row-label" data-it="Accesso" data-en="Access" data-de="Zugang" data-ru="Доступ">Accesso</div>
-      <div class="row-val" data-it="Cancello automatico. Il codice di accesso è stato comunicato al check-in." data-en="Automatic gate. The access code was provided at check-in." data-de="Automatisches Tor. Der Zugangscode wurde beim Check-in mitgeteilt." data-ru="Автоматические ворота. Код доступа был сообщён при заселении.">Cancello automatico · Codice comunicato al check-in</div>
-    </div>
-    <div class="row">
-      <div class="row-label" data-it="Parcheggio" data-en="Parking" data-de="Parken" data-ru="Парковка">Parcheggio</div>
-      <div class="row-val" data-it="Parcheggio esterno in prossimità della villa. Vietato parcheggiare nel giardino del Relais." data-en="Outdoor parking near the villa. Do not park in the Relais garden." data-de="Außenparkplatz in der Nähe der Villa. Nicht im Garten parken." data-ru="Парковка снаружи рядом с виллой. Въезд в сад Релейса запрещён.">Esterno · Vietato nel giardino</div>
-    </div>
-    <a class="map-btn" href="https://maps.google.com/?q=Via+Didone+9+Porto+Badino+Terracina" target="_blank">📍 <span data-it="Apri in Google Maps" data-en="Open in Google Maps" data-de="In Google Maps öffnen" data-ru="Открыть в Google Maps">Apri in Google Maps</span></a>
+    <a class="map-btn" href="https://maps.google.com/?q=Via+Didone+9+Terracina+04019" target="_blank">📍 <span data-it="Apri in Google Maps" data-en="Open in Google Maps" data-de="In Google Maps öffnen" data-ru="Открыть в Google Maps">Apri in Google Maps</span></a>
   </div>
 </div>
 
@@ -400,15 +401,11 @@ body{font-family:'Raleway',sans-serif;color:var(--ink);min-height:100vh;overflow
 
 <div class="card" id="s-rooms">
   <div class="card-hdr" onclick="tog('s-rooms')">
-    <div class="card-icon">📺</div>
-    <div class="card-title" data-it="Camere & TV" data-en="Rooms & TV" data-de="Zimmer & TV" data-ru="Комнаты и ТВ">Camere & TV</div>
+    <div class="card-icon">🛏️</div>
+    <div class="card-title" data-it="Camere" data-en="Rooms" data-de="Zimmer" data-ru="Комнаты">Camere</div>
     <div class="chevron">▾</div>
   </div>
   <div class="card-body">
-    <div class="row">
-      <div class="row-label" data-it="Smart TV" data-en="Smart TV" data-de="Smart TV" data-ru="Smart TV">Smart TV</div>
-      <div class="row-val" data-it="Smart TV in salone con canali italiani e stranieri (decoder TIVUSAT Humax incluso). Puoi collegare il tuo account Netflix o Amazon Prime direttamente dalla TV." data-en="Smart TV in the living room with Italian and foreign channels (TIVUSAT Humax decoder included). You can log in to your personal Netflix or Amazon Prime account directly on the TV." data-de="Smart TV im Wohnzimmer mit italienischen und ausländischen Sendern. Netflix- oder Amazon-Prime-Konto direkt anmelden." data-ru="Smart TV в гостиной с итальянскими и зарубежными каналами (декодер TIVUSAT Humax включён). Можно войти в Netflix или Amazon Prime прямо с ТВ.">Smart TV in salone · Accedi al tuo account <strong>Netflix</strong> o <strong>Amazon Prime</strong> direttamente dalla TV</div>
-    </div>
     <div class="row">
       <div class="row-label" data-it="Ventilatori" data-en="Ceiling fans" data-de="Ventilatoren" data-ru="Вентиляторы">Ventilatori</div>
       <div class="row-val" data-it="A soffitto in ogni camera, con telecomando." data-en="Ceiling fans in each room, operated by remote control." data-de="Deckenventilatoren in jedem Zimmer, mit Fernbedienung." data-ru="Потолочные в каждой комнате, с пультом.">In ogni camera, con telecomando</div>
@@ -424,6 +421,31 @@ body{font-family:'Raleway',sans-serif;color:var(--ink);min-height:100vh;overflow
     <div class="row">
       <div class="row-label" data-it="Estintore" data-en="Fire extinguisher" data-de="Feuerlöscher" data-ru="Огнетушитель">Estintore</div>
       <div class="row-val" data-it="In cucina, nel cabinet basso sul lato della lavatrice." data-en="In the kitchen, in the lower cabinet on the washing machine side." data-de="In der Küche, im unteren Schrank auf der Seite der Waschmaschine." data-ru="На кухне, в нижнем шкафу со стороны стиральной машины.">In cucina · Cabinet basso lato lavatrice</div>
+    </div>
+  </div>
+</div>
+
+<div class="card" id="s-tv">
+  <div class="card-hdr" onclick="tog('s-tv')">
+    <div class="card-icon">📺</div>
+    <div class="card-title" data-it="Canali TV" data-en="TV Channels" data-de="TV-Kanäle" data-ru="Каналы ТВ">Canali TV</div>
+    <div class="chevron">▾</div>
+  </div>
+  <div class="card-body">
+    <div class="row">
+      <div class="row-label" data-it="Smart TV" data-en="Smart TV" data-de="Smart TV" data-ru="Smart TV">Smart TV</div>
+      <div class="row-val" data-it="Smart TV in salone con canali italiani e stranieri (decoder TivùSat Humax incluso). Puoi collegare il tuo account Netflix o Amazon Prime direttamente dalla TV." data-en="Smart TV in the living room with Italian and foreign channels (TivùSat Humax decoder included). You can log in to your Netflix or Amazon Prime account directly on the TV." data-de="Smart TV im Wohnzimmer mit ital. und ausländischen Sendern (TivùSat Humax inklusive). Netflix- oder Amazon-Prime-Konto direkt anmelden." data-ru="Smart TV в гостиной (декодер TivùSat Humax включён). Войдите в Netflix или Amazon Prime прямо с ТВ.">Smart TV in salone · <strong>Netflix</strong> &amp; <strong>Amazon Prime</strong> disponibili</div>
+    </div>
+    <div style="margin-top:14px;">
+      <div style="font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--sabbia);padding-bottom:8px;" data-it="Canali per lingua" data-en="Channels by language" data-de="Sender nach Sprache" data-ru="Каналы по языку">Canali per lingua</div>
+      <div class="ch-filter" id="ch-filter">
+        <button class="ch-btn active" onclick="filterCh('it',this)">🇮🇹 IT</button>
+        <button class="ch-btn" onclick="filterCh('en',this)">🇬🇧 EN</button>
+        <button class="ch-btn" onclick="filterCh('de',this)">🇩🇪 DE</button>
+        <button class="ch-btn" onclick="filterCh('fr',this)">🇫🇷 FR</button>
+        <button class="ch-btn" onclick="filterCh('ru',this)">🇷🇺 RU</button>
+      </div>
+      <div class="ch-list" id="ch-list"></div>
     </div>
   </div>
 </div>
@@ -718,6 +740,28 @@ const L={
   ru:{title:'Гид для гостей',sub:'Добро пожаловать · Welcome · Willkommen · Benvenuti'}
 };
 let currentLang='it';
+const CHANNELS={
+  it:[[1,'Rai 1 HD'],[2,'Rai 2 HD'],[3,'Rai 3 HD'],[4,'Rete 4 HD'],[5,'Canale 5 HD'],[6,'Italia 1 HD'],[7,'La7 HD'],[8,'Tv8 HD'],[9,'Nove HD'],[10,'Rai 4 HD'],[11,'Iris HD'],[12,'La 5 HD'],[13,'Rai 5 HD'],[14,'Rai Movie HD'],[15,'Rai Premium HD'],[16,'Italia 2 HD'],[17,'Mediaset Extra HD'],[18,'TV2000 HD'],[19,'Cielo HD'],[20,'Mediaset 20 HD'],[21,'Rai Sport HD'],[22,'Focus HD'],[23,'Rai Storia HD'],[24,'Rai News 24 HD'],[25,'TgCom 24 HD'],[26,'Rai Scuola HD'],[27,'TwentySeven HD'],[28,'Dmax HD'],[29,'La7 Cinema HD'],[30,'We Do Movies'],[31,'Real Time HD'],[33,'Food Network HD'],[34,'Cine 34 HD'],[37,'Discovery HD'],[38,'Giallo HD'],[39,'Top Crime HD'],[40,'Boing HD'],[41,'Cartoonito HD'],[42,'Rai Gulp HD'],[43,'Rai Yoyo HD'],[44,'Frisbee'],[46,'K2'],[47,'Super!'],[48,'Arte HD'],[49,'Mezzo'],[51,'Equ Tv HD'],[52,'ACI Sport Tv HD'],[54,'Sportitalia Solo Calcio HD'],[55,'Marcopolo Travel Tv'],[56,'HGTV HD'],[58,'Euronews Italian'],[59,'Discovery Turbo HD'],[62,'RTL 102.5 Caliente HD'],[76,'Dim Tv'],[81,'CNBC Europe HD'],[82,'Bloomberg European Tv'],[89,'Senato Italiano HD'],[90,'Camera dei Deputati']],
+  en:[[60,'We Do Big Stories HD'],[69,'France 24 English'],[70,'BBC News Europe'],[71,'Al Jazeera English HD'],[72,'TRT World HD'],[73,'NHK World HD'],[81,'CNBC Europe HD'],[82,'Bloomberg European Tv'],[85,'DW – Deutsche Welle HD'],[86,'Euronews English'],[87,'CGTN HD'],[88,'CGTN Documentary HD']],
+  de:[[48,'Arte HD'],[85,'DW – Deutsche Welle HD']],
+  fr:[[48,'Arte HD'],[75,'France 24 Français']],
+  ru:[[74,'Freedom'],[94,'Svoboda Tv'],[95,'Svoboda News'],[96,'Svoboda Plus'],[97,"Russia's Future"],[98,'Belarus Tomorrow'],[99,'Gordon Live']]
+};
+let activeLang='it';
+function filterCh(lang,btn){
+  activeLang=lang;
+  document.querySelectorAll('.ch-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  renderCh();
+}
+function renderCh(){
+  const list=document.getElementById('ch-list');
+  if(!list)return;
+  const chs=CHANNELS[activeLang]||[];
+  list.innerHTML=chs.map(([n,name])=>`<div class="ch-item"><span class="ch-num">${n}</span><span class="ch-name">${name}</span></div>`).join('');
+}
+document.addEventListener('DOMContentLoaded',renderCh);
+
 function setLang(l){
   currentLang=l;
   renderMeteo(meteoData,marineData);
