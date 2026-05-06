@@ -160,7 +160,7 @@ body{font-family:'Raleway',sans-serif;color:var(--ink);min-height:100vh;overflow
   </div>
 </div>
 
-<div class="card open" id="s-waste">
+<div class="card" id="s-waste">
   <div class="card-hdr" onclick="tog('s-waste')">
     <div class="card-icon">🌙</div>
     <div class="card-title" data-it="Raccolta differenziata" data-en="Waste collection" data-de="Mülltrennung" data-ru="Вывоз мусора">Raccolta differenziata</div>
@@ -172,6 +172,8 @@ body{font-family:'Raleway',sans-serif;color:var(--ink);min-height:100vh;overflow
     <div class="note" data-it="Sacchi fuori dal cancello la sera prima della raccolta." data-en="Bags outside the gate the evening before collection." data-de="Taschen am Vorabend vor das Tor stellen." data-ru="Мешки за ворота накануне вывоза.">🗑 Sacchi fuori dal cancello la sera prima della raccolta</div>
   </div>
 </div>
+
+<div class="section-hdr">🏡 La Villa</div>
 
 <div class="card" id="s-location">
   <div class="card-hdr" onclick="tog('s-location')">
@@ -522,6 +524,8 @@ body{font-family:'Raleway',sans-serif;color:var(--ink);min-height:100vh;overflow
   </div>
 </div>
 
+<div class="section-hdr">🗺️ Dintorni & Servizi</div>
+
 <div class="card" id="s-supermarkets">
   <div class="card-hdr" onclick="tog('s-supermarkets')">
     <div class="card-icon">🛒</div>
@@ -712,6 +716,8 @@ body{font-family:'Raleway',sans-serif;color:var(--ink);min-height:100vh;overflow
 </div>
 
 <!-- Contatti accoglienza -->
+<div class="section-hdr">📞 Contatti & Emergenze</div>
+
 <div class="card" id="s-contact">
   <div class="card-hdr" onclick="tog('s-contact')">
     <div class="card-icon">👤</div>
@@ -807,11 +813,14 @@ body{font-family:'Raleway',sans-serif;color:var(--ink);min-height:100vh;overflow
 .meteo-sea{font-size:9px;color:#4A90D9;margin-top:4px;border-top:1px solid var(--calce3);padding-top:4px}
 .meteo-wtemp{font-size:9px;color:var(--muted);margin-top:1px}
 .meteo-loc{font-size:9px;color:var(--muted);text-align:center;margin-top:6px;letter-spacing:.08em}
-.waste-card-inner{border:4px solid var(--calce3);border-radius:16px;padding:22px 16px 18px;text-align:center;transition:border-color .3s;margin-bottom:14px;}
-.waste-card-sub{font-size:9px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--sabbia);margin-bottom:10px;}
-.waste-card-ico{font-size:52px;line-height:1;margin-bottom:10px;}
-.waste-card-name{font-size:19px;font-weight:800;color:var(--marrone);margin-bottom:4px;letter-spacing:.01em;}
-.waste-card-bin{font-size:11px;color:var(--muted);}
+.section-hdr{display:flex;align-items:center;gap:10px;padding:20px 4px 8px;font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--sabbia);}
+.section-hdr::after{content:'';flex:1;height:1px;background:var(--calce3);}
+
+.waste-card-inner{display:flex;align-items:center;gap:14px;border:3px solid var(--calce3);border-radius:12px;padding:14px 16px;transition:border-color .3s;margin-bottom:14px;}
+.waste-card-sub{font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--sabbia);margin-bottom:3px;}
+.waste-card-ico{font-size:32px;line-height:1;flex-shrink:0;}
+.waste-card-name{font-size:15px;font-weight:700;color:var(--marrone);}
+.waste-card-bin{font-size:11px;color:var(--muted);margin-top:2px;}
 .waste-none-msg{text-align:center;color:var(--muted);font-size:13px;padding:20px 0;}
 .waste-week{display:flex;gap:4px;margin-bottom:12px;}
 .waste-wday{flex:1;background:var(--calce);border-radius:8px;padding:6px 2px;text-align:center;border:1.5px solid var(--calce3);}
@@ -920,7 +929,7 @@ function renderWasteTonight(){
   const hdr={it:'Esponi stasera',en:'Put out tonight',de:'Heute Abend rausstellen',ru:'Выставить сегодня вечером'};
   if(w){
     const color=WASTE_COLORS[w.icon]||'var(--marrone)';
-    el.innerHTML=`<div class="waste-card-inner" style="border-color:${color}"><div class="waste-card-sub">${hdr[l]||hdr.it}</div><div class="waste-card-ico">${w.icon}</div><div class="waste-card-name">${w[l]||w.it}</div><div class="waste-card-bin">${w['bin_'+l]||w.bin_it}</div></div>`;
+    el.innerHTML=`<div class="waste-card-inner" style="border-color:${color}"><div class="waste-card-ico">${w.icon}</div><div><div class="waste-card-sub">${hdr[l]||hdr.it}</div><div class="waste-card-name">${w[l]||w.it}</div><div class="waste-card-bin">${w['bin_'+l]||w.bin_it}</div></div></div>`;
   }else{
     const msg={it:'Nessuna raccolta domani 🎉',en:'No collection tomorrow 🎉',de:'Morgen keine Abholung 🎉',ru:'Завтра вывоза нет 🎉'};
     el.innerHTML=`<div class="waste-none-msg">${msg[l]||msg.it}</div>`;
