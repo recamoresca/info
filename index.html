@@ -160,6 +160,17 @@ body{font-family:'Raleway',sans-serif;color:var(--ink);min-height:100vh;overflow
   </div>
 </div>
 
+<div class="card open" id="s-tonight">
+  <div class="card-hdr" onclick="tog('s-tonight')">
+    <div class="card-icon">🗑️</div>
+    <div class="card-title" data-it="Cosa si butta stasera" data-en="Tonight's bins" data-de="Heute Abend rausstellen" data-ru="Что выносить сегодня вечером">Cosa si butta stasera</div>
+    <div class="chevron">▾</div>
+  </div>
+  <div class="card-body">
+    <div id="tonight-content" style="padding-top:4px"></div>
+  </div>
+</div>
+
 <div class="card" id="s-location">
   <div class="card-hdr" onclick="tog('s-location')">
     <div class="card-icon">📍</div>
@@ -798,9 +809,55 @@ function renderCh(){
 }
 document.addEventListener('DOMContentLoaded',renderCh);
 
+// ── Raccolta differenziata dinamica ──────────────────────────────────────────
+// GLASS_REF: data di riferimento per il vetro (ogni 15 gg). Aggiornare se
+// il calendario del Comune cambia.
+const GLASS_REF=new Date('2026-01-09');
+const BIN_INFO={
+  organico:{bg:'#7B4A35',l:{it:'🟤 Organico',en:'🟤 Organic waste',de:'🟤 Bioabfall',ru:'🟤 Органические'}},
+  secco:   {bg:'#555555',l:{it:'⚫ Secco residuo',en:'⚫ Residual waste',de:'⚫ Restmüll',ru:'⚫ Смешанные'}},
+  plastica:{bg:'#B89650',l:{it:'🟡 Plastica & Metalli',en:'🟡 Plastic & Metal',de:'🟡 Plastik & Metall',ru:'🟡 Пластик и металл'}},
+  carta:   {bg:'#3B6EA0',l:{it:'🔵 Carta & Cartone',en:'🔵 Paper & Cardboard',de:'🔵 Papier & Karton',ru:'🔵 Бумага и картон'}},
+  vetro:   {bg:'#4D7A5A',l:{it:'🟢 Vetro',en:'🟢 Glass',de:'🟢 Glas',ru:'🟢 Стекло'}}
+};
+const TNI={
+  hdr: {it:'Raccolta di domani',en:"Tomorrow's collection",de:'Abholung morgen',ru:'Завтрашний вывоз'},
+  hint:{it:'Portare i sacchi fuori dal cancello stasera',en:'Leave bags outside the gate tonight',de:'Heute Abend Taschen vor das Tor stellen',ru:'Вынесите мешки за ворота сегодня вечером'},
+  none:{it:'Nessuna raccolta domani — nulla da esporre stasera.',en:'No collection tomorrow — nothing to put out tonight.',de:'Morgen keine Abholung — heute Abend nichts rausstellen.',ru:'Завтра вывоза нет — сегодня ничего выносить не нужно.'},
+  dow: {it:['domenica','lunedì','martedì','mercoledì','giovedì','venerdì','sabato'],en:['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'],de:['Sonntag','Montag','Dienstag','Mittwoch','Donnerstag','Freitag','Samstag'],ru:['воскресенье','понедельник','вторник','среда','четверг','пятница','суббота']}
+};
+function getTonightBins(){
+  const t=new Date();t.setDate(t.getDate()+1);t.setHours(0,0,0,0);
+  const dw=t.getDay(),mo=t.getMonth()+1,bins=[];
+  if(dw===1||dw===3||dw===6)bins.push('organico');
+  if(dw===2)bins.push('secco');
+  if(dw===4||(dw===0&&(mo===7||mo===8)))bins.push('plastica');
+  if(dw===5)bins.push('carta');
+  const ref=new Date(GLASS_REF);ref.setHours(0,0,0,0);
+  const diff=Math.round((t-ref)/864e5);
+  if(diff>=0&&diff%15===0)bins.push('vetro');
+  return bins;
+}
+function renderTonight(){
+  const el=document.getElementById('tonight-content');if(!el)return;
+  const l=currentLang||'it';
+  const bins=getTonightBins();
+  const t=new Date();t.setDate(t.getDate()+1);
+  const dn=(TNI.dow[l]||TNI.dow.it)[t.getDay()];
+  if(!bins.length){
+    el.innerHTML=`<div style="font-size:12px;color:var(--oliva);padding:6px 0;line-height:1.6">✅ ${TNI.none[l]||TNI.none.it}</div>`;
+    return;
+  }
+  const badges=bins.map(b=>`<span style="display:inline-block;background:${BIN_INFO[b].bg};color:#fff;border-radius:20px;padding:7px 16px;font-size:12px;font-weight:700;letter-spacing:.04em">${BIN_INFO[b].l[l]||BIN_INFO[b].l.it}</span>`).join('');
+  el.innerHTML=`<div style="font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--sabbia);padding-bottom:10px">${TNI.hdr[l]||TNI.hdr.it} — ${dn}</div><div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px">${badges}</div><div class="note">🌙 ${TNI.hint[l]||TNI.hint.it}</div>`;
+}
+renderTonight();
+// ────────────────────────────────────────────────────────────────────────────
+
 function setLang(l){
   currentLang=l;
   renderMeteo(meteoData,marineData);
+  renderTonight();
   document.querySelectorAll('.lang-btn').forEach((b,i)=>{b.classList.toggle('active',['it','en','de','ru'][i]===l)});
   document.getElementById('hero-title').textContent=L[l]?L[l].title:'Guida Ospiti';
   document.getElementById('hero-sub').textContent=L[l].sub;
