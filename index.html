@@ -121,6 +121,12 @@ body{font-family:'Raleway',sans-serif;color:var(--ink);min-height:100vh;overflow
 .ch-item:last-child{border-bottom:none;}
 .ch-num{min-width:28px;font-size:11px;font-weight:700;color:var(--sabbia);text-align:right;}
 .ch-name{font-size:12px;color:var(--marrone);font-weight:600;}
+.beach-map-block{margin:14px 0 10px;}
+.beach-map-label{font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--sabbia);margin-bottom:10px;}
+.beach-map-img{width:100%;border-radius:12px;display:block;margin-bottom:12px;box-shadow:0 2px 12px rgba(0,0,0,.10);}
+.beach-steps{margin:0;padding-left:20px;}
+.beach-steps li{font-size:12px;color:var(--marrone);line-height:1.55;margin-bottom:6px;padding-left:2px;}
+.beach-steps li:last-child{margin-bottom:0;}
 </style>
 </head>
 <body>
@@ -275,6 +281,16 @@ body{font-family:'Raleway',sans-serif;color:var(--ink);min-height:100vh;overflow
     <div class="row">
       <div class="row-label" data-it="Bar & Ristorante" data-en="Bar & Restaurant" data-de="Bar" data-ru="Бар и ресторан">Bar</div>
       <div class="row-val" data-it="Bar aperto dalle 08:00 al tramonto · Ristorante 13:00–15:30" data-en="Bar open 08:00 to dusk · Restaurant 13:00–15:30" data-de="Bar 08:00 bis Sonnenuntergang · Restaurant 13:00–15:30" data-ru="Бар с 08:00 до заката · Ресторан 13:00–15:30">Bar 08:00 – tramonto · Ristorante 13:00–15:30</div>
+    </div>
+    <div class="beach-map-block">
+      <div class="beach-map-label" data-it="Come raggiungere lo stabilimento" data-en="How to reach the beach club" data-de="Zum Strandclub gelangen" data-ru="Как добраться до пляжного клуба">Come raggiungere lo stabilimento</div>
+      <img src="map-spiaggia.png" alt="Mappa percorso spiaggia" class="beach-map-img">
+      <ol class="beach-steps">
+        <li><span data-it="Percorri Via Didone e svolta a sinistra in Viale Virgilio per iniziare il percorso verso il mare." data-en="Walk along Via Didone and turn left onto Viale Virgilio to head towards the sea." data-de="Gehe die Via Didone entlang und biege links in den Viale Virgilio ab, Richtung Meer." data-ru="Пройдите по Via Didone и поверните налево на Viale Virgilio в сторону моря.">Percorri Via Didone e svolta a sinistra in Viale Virgilio per iniziare il percorso verso il mare.</span></li>
+        <li><span data-it="Prosegui su Viale Virgilio, passando la Pizzeria i Forliti." data-en="Continue along Viale Virgilio, passing Pizzeria i Forliti." data-de="Weiter den Viale Virgilio entlang, vorbei an der Pizzeria i Forliti." data-ru="Продолжайте по Viale Virgilio, проходя мимо Pizzeria i Forliti.">Prosegui su Viale Virgilio, passando la Pizzeria i Forliti.</span></li>
+        <li><span data-it="Svolta a destra in Via Priamo e seguila fino in fondo." data-en="Turn right onto Via Priamo and follow it to the end." data-de="Biegen Sie rechts in die Via Priamo ab und folgen Sie ihr bis zum Ende." data-ru="Поверните направо на Via Priamo и идите до конца.">Svolta a destra in Via Priamo e seguila fino in fondo.</span></li>
+        <li><span data-it="Scendi le scale fino alla spiaggia e svolta a destra: sei allo stabilimento." data-en="Go down the stairs to the beach and turn right: you have arrived." data-de="Die Treppe hinunter zum Strand, dann rechts: Sie sind angekommen." data-ru="Спуститесь по лестнице на пляж и поверните направо — вы на месте.">Scendi le scale fino alla spiaggia e svolta a destra: sei allo stabilimento.</span></li>
+      </ol>
     </div>
     <a class="map-btn" href="https://maps.google.com/?q=Lido+di+Venere+Porto+Badino" target="_blank">📍 <span data-it="Apri in Google Maps" data-en="Open in Google Maps" data-de="In Google Maps öffnen" data-ru="Открыть в Google Maps">Apri in Google Maps</span></a>
   </div>
