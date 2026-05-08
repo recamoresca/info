@@ -9,6 +9,8 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Casa Moresca">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icon-192.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
 <style>
@@ -875,7 +877,7 @@ const DOW={it:['Dom','Lun','Mar','Mer','Gio','Ven','Sab'],en:['Sun','Mon','Tue',
 let meteoData=null;
 let marineData=null;
 function waveIco(h){return h<0.3?'🪨':h<0.8?'〰️':h<1.5?'🌊':'⚠️';}
-async function loadMeteo(){
+async function loadMeteo(retries=3){
   try{
     const [rw,rm]=await Promise.all([
       fetch('https://api.open-meteo.com/v1/forecast?latitude=41.28&longitude=13.25&daily=temperature_2m_max,temperature_2m_min,precipitation_sum,weathercode&timezone=Europe/Rome&forecast_days=5'),
@@ -885,7 +887,8 @@ async function loadMeteo(){
     meteoData=dw.daily; marineData=dm.daily;
     renderMeteo(meteoData,marineData);
   }catch(e){
-    document.getElementById('meteo-content').innerHTML='<div style="color:var(--muted);font-size:12px;text-align:center;padding:8px 0">Dati non disponibili</div>';
+    if(retries>0){setTimeout(()=>loadMeteo(retries-1),3000);}
+    else{document.getElementById('meteo-content').innerHTML='<div style="color:var(--muted);font-size:12px;text-align:center;padding:8px 0">Dati non disponibili</div>';}
   }
 }
 function renderMeteo(d,m){
@@ -943,8 +946,6 @@ function renderCh(){
   const chs=CHANNELS[activeLang]||[];
   list.innerHTML=chs.map(([n,name])=>`<div class="ch-item"><span class="ch-num">${n}</span><span class="ch-name">${name}</span></div>`).join('');
 }
-document.addEventListener('DOMContentLoaded',renderCh);
-
 const WASTE={
   1:{icon:'🟤',it:'Organico',en:'Organic',de:'Bioabfall',ru:'Органические',bin_it:'Coperchio marrone',bin_en:'Brown bin',bin_de:'Brauner Eimer',bin_ru:'Коричневая крышка'},
   2:{icon:'⚫',it:'Secco residuo',en:'Residual waste',de:'Restmüll',ru:'Смешанные отходы',bin_it:'Coperchio grigio',bin_en:'Grey bin',bin_de:'Grauer Eimer',bin_ru:'Серая крышка'},
@@ -987,11 +988,13 @@ function renderWasteTonight(){
     }).join('');
   }
 }
-document.addEventListener('DOMContentLoaded',renderWasteTonight);
+document.addEventListener('DOMContentLoaded',function(){renderCh();renderWasteTonight();});
 
 const BEACH_MAPS={it:'map-spiaggia.png',en:'map-spiaggia-en.png',de:'map-spiaggia-de.png',ru:'map-spiaggia-ru.png'};
 function setLang(l){
   currentLang=l;
+  document.documentElement.lang=l;
+  try{localStorage.setItem('lang',l);}catch(e){}
   renderMeteo(meteoData,marineData);
   renderWasteTonight();
   document.querySelectorAll('.lang-btn').forEach((b,i)=>{b.classList.toggle('active',['it','en','de','ru'][i]===l)});
@@ -1000,7 +1003,10 @@ function setLang(l){
   document.querySelectorAll('[data-'+l+']').forEach(el=>{if(el.dataset.html)el.innerHTML=el.getAttribute('data-'+l);else el.textContent=el.getAttribute('data-'+l);});
   const bm=document.getElementById('beach-map');if(bm)bm.src=BEACH_MAPS[l]||BEACH_MAPS.it;
 }
-function tog(id){document.getElementById(id).classList.toggle('open')}
+function tog(id){
+  document.getElementById(id).classList.toggle('open');
+  try{localStorage.setItem('cards',JSON.stringify([...document.querySelectorAll('.card.open')].map(c=>c.id)));}catch(e){}
+}
 function cp(txt){
   navigator.clipboard?.writeText(txt).then(()=>{
     const toastMsg={it:'✓ Copiato!',en:'✓ Copied!',de:'✓ Kopiert!',ru:'✓ Скопировано!'};
@@ -1014,9 +1020,23 @@ window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();dp=e;docume
 document.getElementById('install-btn')?.addEventListener('click',async()=>{if(!dp)return;dp.prompt();await dp.userChoice;dp=null;document.getElementById('install-bar').style.display='none';});
 if(/iphone|ipad|ipod/i.test(navigator.userAgent)&&!navigator.standalone){
   const b=document.getElementById('install-bar');b.style.display='flex';
-  b.querySelector('p').innerHTML='<strong>📱 Aggiungi alla schermata Home</strong>Tocca ⬆️ poi "Aggiungi a Home Screen"';
+  const _iT={it:'📱 Aggiungi alla schermata Home',en:'📱 Add to Home Screen',de:'📱 Zum Home-Bildschirm',ru:'📱 Добавить на экран'};
+  const _iM={it:'Tocca ⬆️ poi "Aggiungi a Home Screen"',en:'Tap ⬆️ then "Add to Home Screen"',de:'Tippe ⬆️ dann "Zum Home-Bildschirm"',ru:'Нажми ⬆️ затем "На экран Домой"'};
+  const _l0=(()=>{try{return localStorage.getItem('lang')||'it';}catch(e){return 'it';}})();
+  b.querySelector('p').innerHTML=`<strong>${_iT[_l0]||_iT.it}</strong>${_iM[_l0]||_iM.it}`;
   document.getElementById('install-btn').style.display='none';
 }
+// Restore saved language
+(function(){try{const s=localStorage.getItem('lang');if(s&&['it','en','de','ru'].includes(s))setLang(s);}catch(e){}})();
+// Restore card states
+document.addEventListener('DOMContentLoaded',function(){
+  try{
+    const saved=localStorage.getItem('cards');
+    if(saved){const open=JSON.parse(saved);document.querySelectorAll('.card').forEach(c=>{c.classList.toggle('open',open.includes(c.id));});}
+  }catch(e){}
+});
+// Service Worker
+if('serviceWorker' in navigator){navigator.serviceWorker.register('./sw.js').catch(()=>{});}
 </script>
 </body>
 </html>

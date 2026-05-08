@@ -1,0 +1,15 @@
+{
+  "name": "Relais Casa Moresca – Guida Ospiti",
+  "short_name": "Casa Moresca",
+  "description": "Guida per gli ospiti di Relais Casa Moresca",
+  "start_url": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#F7F3ED",
+  "theme_color": "#2C2118",
+  "lang": "it",
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}
