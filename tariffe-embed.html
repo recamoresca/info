@@ -13,20 +13,27 @@
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
-    --bg:       #f0ece2;
-    --card:     #f8f5ee;
-    --white:    #ffffff;
+    --bg:       transparent;
+    --card:     rgba(248, 245, 238, 0.82);
+    --card-s:   rgba(248, 245, 238, 0.92);
+    --white:    rgba(255, 255, 255, 0.9);
     --text:     #28381c;
     --muted:    #7a6f5a;
     --gold:     #c49040;
     --gold-lt:  #e8c878;
-    --line:     #e0d8c8;
-    --peak:     #1c2a14;
+    --line:     rgba(224, 216, 200, 0.65);
+    --peak:     rgba(28, 42, 20, 0.96);
+    --shadow:   0 4px 24px rgba(40, 56, 28, 0.08);
+    --shadow-h: 0 8px 32px rgba(40, 56, 28, 0.13);
+  }
+
+  html {
+    background: transparent;
   }
 
   body {
     font-family: 'Raleway', sans-serif;
-    background: var(--bg);
+    background: transparent;
     color: var(--text);
     font-weight: 400;
     line-height: 1.65;
@@ -39,7 +46,7 @@
   .hero {
     text-align: center;
     padding: 56px 24px 48px;
-    background: var(--bg);
+    background: transparent;
   }
   .hero-tag {
     font-size: .7rem;
@@ -80,6 +87,8 @@
   /* ── INFO CARD ── */
   .info-card {
     background: var(--card);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     border-radius: 18px;
     padding: 20px 22px;
     margin: 0 0 0;
@@ -87,6 +96,7 @@
     color: var(--muted);
     line-height: 1.7;
     border: 1px solid var(--line);
+    box-shadow: var(--shadow);
     margin-top: 0;
   }
   .info-card strong { color: var(--text); font-weight: 700; }
@@ -119,15 +129,18 @@
 
   .s-card {
     background: var(--card);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     border-radius: 18px;
     padding: 22px 18px 20px;
     text-align: center;
     border: 1px solid var(--line);
+    box-shadow: var(--shadow);
     transition: transform .2s, box-shadow .2s;
   }
   .s-card:hover {
     transform: translateY(-3px);
-    box-shadow: 0 8px 24px rgba(31,26,18,.1);
+    box-shadow: var(--shadow-h);
   }
 
   .s-icon {
@@ -182,9 +195,12 @@
   /* ── AGOSTO CARD ── */
   .agosto-card {
     background: var(--peak);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     border-radius: 18px;
     overflow: hidden;
     border: 1px solid rgba(255,255,255,.08);
+    box-shadow: var(--shadow-h);
     margin-top: 12px;
   }
   .agosto-top {
@@ -263,6 +279,8 @@
   /* CLEANING NOTE */
   .cleaning-note {
     background: var(--card);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     border-radius: 12px;
     border: 1px solid var(--line);
     padding: 12px 18px;
@@ -272,6 +290,7 @@
     display: flex;
     align-items: center;
     gap: 8px;
+    box-shadow: var(--shadow);
   }
   .cleaning-note strong { color: var(--text); font-weight: 700; }
 
@@ -283,6 +302,8 @@
   }
   .disc-card {
     background: var(--card);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     border-radius: 16px;
     border: 1px solid var(--line);
     padding: 18px 22px;
@@ -290,9 +311,10 @@
     align-items: center;
     justify-content: space-between;
     gap: 20px;
-    transition: transform .15s;
+    box-shadow: var(--shadow);
+    transition: transform .15s, box-shadow .15s;
   }
-  .disc-card:hover { transform: translateX(3px); }
+  .disc-card:hover { transform: translateX(3px); box-shadow: var(--shadow-h); }
   .disc-icon { font-size: 1.4rem; flex-shrink: 0; }
   .disc-body { flex: 1; }
   .disc-body strong {
@@ -314,9 +336,12 @@
   /* ── TABELLA OSPITI ── */
   .occ-table-wrap {
     background: var(--card);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     border-radius: 18px;
     overflow: hidden;
     border: 1px solid var(--line);
+    box-shadow: var(--shadow);
   }
   .occ-table-scroll {
     overflow-x: auto;
@@ -378,15 +403,18 @@
   }
   .inc-card {
     background: var(--card);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     border-radius: 16px;
     border: 1px solid var(--line);
     padding: 18px 20px;
     display: flex;
     align-items: flex-start;
     gap: 14px;
-    transition: transform .15s;
+    box-shadow: var(--shadow);
+    transition: transform .15s, box-shadow .15s;
   }
-  .inc-card:hover { transform: translateY(-2px); }
+  .inc-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-h); }
   .inc-emoji {
     font-size: 1.5rem;
     flex-shrink: 0;
@@ -398,8 +426,11 @@
   /* ── CTA ── */
   .cta-card {
     background: var(--card);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     border-radius: 22px;
     border: 1px solid var(--line);
+    box-shadow: var(--shadow-h);
     padding: 52px 28px 48px;
     text-align: center;
     margin: 40px 0 52px;
