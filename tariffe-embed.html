@@ -96,6 +96,9 @@
     padding: 0 20px;
   }
 
+  /* ── GAP tra hero e primo card ── */
+  .hero + .wrap { margin-top: 28px; }
+
   /* ── INFO CARD ── */
   .info-card {
     background: var(--card);
@@ -114,21 +117,23 @@
   .info-card strong { color: var(--text); font-weight: 700; }
 
   /* ── SECTION ── */
-  .section { margin-top: 44px; }
+  .section { margin-top: 52px; }
   .sec-tag {
-    font-size: .68rem;
-    letter-spacing: .2em;
+    font-size: .65rem;
+    letter-spacing: .24em;
     text-transform: uppercase;
     font-weight: 700;
-    color: var(--gold);
+    color: rgba(255, 255, 255, 0.82);
+    text-shadow: 0 1px 6px rgba(0,0,0,0.55), 0 0 20px rgba(0,0,0,0.3);
     display: block;
     margin-bottom: 6px;
   }
   .sec-title {
-    font-size: clamp(1.2rem, 3vw, 1.65rem);
+    font-size: clamp(1.25rem, 3vw, 1.7rem);
     font-weight: 800;
-    color: var(--text);
-    margin-bottom: 24px;
+    color: #ffffff;
+    text-shadow: 0 2px 12px rgba(0,0,0,0.55), 0 1px 3px rgba(0,0,0,0.4);
+    margin-bottom: 22px;
     line-height: 1.2;
   }
 
