@@ -31,6 +31,7 @@
     font-weight: 400;
     line-height: 1.65;
     min-height: 100vh;
+    overflow-x: hidden;
   }
 
   /* ── TOPBAR ── */
@@ -332,6 +333,13 @@
     overflow: hidden;
     border: 1px solid var(--line);
   }
+  .occ-table-scroll {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .occ-table {
+    min-width: 420px;
+  }
   .occ-table {
     width: 100%;
     border-collapse: collapse;
@@ -473,9 +481,17 @@
     .ago-period:last-child { border-bottom: none; }
     .agosto-top { flex-direction: column; align-items: flex-start; gap: 4px; }
     .inc-grid { grid-template-columns: 1fr; }
-    .occ-table th, .occ-table td { padding: 10px 10px; font-size: .8rem; }
-    .disc-value { font-size: 1.35rem; }
+    .occ-table th, .occ-table td { padding: 10px 8px; font-size: .78rem; }
+    .disc-card { flex-wrap: wrap; gap: 10px; }
+    .disc-value { font-size: 1.35rem; width: 100%; text-align: right; }
     .wrap { padding: 0 14px; }
+    .hero { padding: 36px 16px 32px; }
+    .hero h1 { font-size: 1.9rem; }
+    .cta-card { padding: 36px 18px 32px; }
+    .s-price { font-size: 1.65rem; }
+    .ago-price { font-size: 1.65rem; }
+    .agosto-card { margin-top: 10px; }
+    .section { margin-top: 32px; }
   }
   @media (max-width: 380px) {
     .season-grid { grid-template-columns: 1fr; }
@@ -660,7 +676,7 @@
   <div class="section fade d3">
     <span class="sec-tag">Esempi pratici</span>
     <h2 class="sec-title">Tariffe per occupazione ridotta</h2>
-    <div class="occ-table-wrap">
+    <div class="occ-table-wrap"><div class="occ-table-scroll">
       <table class="occ-table">
         <thead>
           <tr>
@@ -697,6 +713,7 @@
           </tr>
         </tbody>
       </table>
+      </div>
     </div>
   </div>
 
