@@ -8,6 +8,7 @@
 <link rel="canonical" href="https://www.bnbcasamoresca.com/tariffe">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/@phosphor-icons/web@2.1.1/src/index.js" defer></script>
 
 <style>
   /* v3 — 2026-05-18 */
@@ -339,19 +340,15 @@
   }
   .disc-card:hover { transform: translateX(3px); box-shadow: var(--shadow-h); }
   .disc-icon {
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    border: 1.5px solid var(--gold);
+    width: 40px;
+    height: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: .7rem;
-    font-weight: 800;
-    color: var(--gold);
-    letter-spacing: .03em;
     flex-shrink: 0;
+    color: var(--gold);
   }
+  .disc-icon i { font-size: 1.6rem; }
   .disc-body { flex: 1; }
   .disc-body strong {
     font-size: .92rem;
@@ -452,21 +449,16 @@
   }
   .inc-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-h); }
   .inc-emoji {
-    width: 32px;
-    height: 32px;
-    border-radius: 8px;
-    background: rgba(180, 131, 46, 0.12);
+    width: 36px;
+    height: 36px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: .6rem;
-    font-weight: 800;
-    color: var(--gold);
-    letter-spacing: .06em;
-    text-transform: uppercase;
     flex-shrink: 0;
-    margin-top: 2px;
+    color: var(--gold);
+    margin-top: 1px;
   }
+  .inc-emoji i { font-size: 1.45rem; }
   .inc-card p { font-size: .83rem; color: var(--muted); line-height: 1.55; }
   .inc-card strong { color: var(--text); font-weight: 700; font-size: .9rem; display: block; margin-bottom: 2px; }
 
@@ -696,7 +688,7 @@
     <h2 class="sec-title">Come ottenere la tariffa migliore</h2>
     <div class="disc-list">
       <div class="disc-card">
-        <span class="disc-icon">7N</span>
+        <span class="disc-icon"><i class="ph-light ph-calendar-check"></i></span>
         <div class="disc-body">
           <strong>Soggiorno settimanale</strong>
           <span>7 notti consecutive — applicato automaticamente alla prenotazione</span>
@@ -704,7 +696,7 @@
         <div class="disc-value">− 5%</div>
       </div>
       <div class="disc-card">
-        <span class="disc-icon">NR</span>
+        <span class="disc-icon"><i class="ph-light ph-lock-simple"></i></span>
         <div class="disc-body">
           <strong>Tariffa non rimborsabile</strong>
           <span>Pagamento anticipato, nessuna cancellazione possibile</span>
@@ -712,7 +704,7 @@
         <div class="disc-value">− 10%</div>
       </div>
       <div class="disc-card">
-        <span class="disc-icon">–€5</span>
+        <span class="disc-icon"><i class="ph-light ph-users"></i></span>
         <div class="disc-body">
           <strong>Meno di 6 ospiti</strong>
           <span>− €5 per ogni posto letto non occupato (base: 6 ospiti)</span>
@@ -773,27 +765,27 @@
     <h2 class="sec-title">Cosa è incluso nella tariffa</h2>
     <div class="inc-grid">
       <div class="inc-card">
-        <span class="inc-emoji">SP</span>
+        <span class="inc-emoji"><i class="ph-light ph-umbrella-simple"></i></span>
         <p><strong>Spiaggia privata</strong>1 ombrellone + 2 lettini + 2 sdraio riservati allo stabilimento Venerelli</p>
       </div>
       <div class="inc-card">
-        <span class="inc-emoji">GD</span>
+        <span class="inc-emoji"><i class="ph-light ph-tree"></i></span>
         <p><strong>Giardino privato (500 mq)</strong>Patio coperto, area relax, Tea Corner, BBQ in muratura</p>
       </div>
       <div class="inc-card">
-        <span class="inc-emoji">BN</span>
+        <span class="inc-emoji"><i class="ph-light ph-bed"></i></span>
         <p><strong>Biancheria completa</strong>Letto e bagno forniti per tutti gli ospiti</p>
       </div>
       <div class="inc-card">
-        <span class="inc-emoji">WF</span>
+        <span class="inc-emoji"><i class="ph-light ph-wifi-high"></i></span>
         <p><strong>WiFi illimitato</strong>Connessione gratuita ad alta velocità in tutta la villa</p>
       </div>
       <div class="inc-card">
-        <span class="inc-emoji">CI</span>
+        <span class="inc-emoji"><i class="ph-light ph-key"></i></span>
         <p><strong>Accoglienza staff</strong>Check-in ore 15:00 — Check-out ore 11:00</p>
       </div>
       <div class="inc-card">
-        <span class="inc-emoji">AC</span>
+        <span class="inc-emoji"><i class="ph-light ph-wind"></i></span>
         <p><strong>Aria condizionata</strong>Climatizzazione in tutte le camere</p>
       </div>
     </div>
