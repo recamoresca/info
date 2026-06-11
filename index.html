@@ -125,6 +125,33 @@ body{font-family:'Raleway',sans-serif;color:var(--ink);min-height:100vh;overflow
 .ch-name{font-size:12px;color:var(--marrone);font-weight:600;}
 .beach-map-block{margin:14px 0 10px;}
 .beach-map-img{width:100%;border-radius:12px;display:block;margin-bottom:12px;box-shadow:0 2px 12px rgba(0,0,0,.10);}
+
+/* ── BANNER OSPITE PERSONALIZZATO ── */
+#guest-banner{
+  display:none;
+  background:var(--marrone);
+  padding:16px 20px;
+  margin:0;
+}
+#guest-banner .gb-label{
+  font-size:10px;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--oro);font-weight:700;margin-bottom:4px;
+}
+#guest-banner .gb-name{
+  font-family:'Cormorant Garamond',serif;
+  font-size:22px;font-weight:400;font-style:italic;
+  color:#fff;margin-bottom:8px;line-height:1.2;
+}
+#guest-banner .gb-details{
+  display:flex;flex-wrap:wrap;gap:10px;
+}
+#guest-banner .gb-pill{
+  background:rgba(255,255,255,.1);
+  border:1px solid rgba(255,255,255,.15);
+  border-radius:20px;padding:4px 12px;
+  font-size:11px;color:rgba(255,255,255,.8);
+  font-weight:600;letter-spacing:.04em;
+}
 </style>
 </head>
 <body>
@@ -133,6 +160,12 @@ body{font-family:'Raleway',sans-serif;color:var(--ink);min-height:100vh;overflow
   <p><strong>📱 Aggiungi alla schermata Home</strong>Accedi sempre alle info del tuo soggiorno</p>
   <button class="install-btn" id="install-btn">Installa</button>
   <button class="install-close" onclick="this.parentElement.style.display='none'">×</button>
+</div>
+
+<div id="guest-banner">
+  <div class="gb-label">Benvenuto a Casa Moresca</div>
+  <div class="gb-name" id="gb-name"></div>
+  <div class="gb-details" id="gb-details"></div>
 </div>
 
 <div class="hero">
@@ -887,6 +920,22 @@ body{font-family:'Raleway',sans-serif;color:var(--ink);min-height:100vh;overflow
 .waste-wday-ico{font-size:13px;}
 </style>
 <script>
+/* ── BANNER OSPITE DA URL PARAMS ── */
+(function(){
+  const p=new URLSearchParams(window.location.search);
+  const guest=p.get('guest');
+  if(!guest)return;
+  const banner=document.getElementById('guest-banner');
+  document.getElementById('gb-name').textContent='Benvenuto '+guest;
+  const pills=[];
+  if(p.get('checkin')&&p.get('checkout'))pills.push(p.get('checkin')+' → '+p.get('checkout'));
+  if(p.get('nights'))pills.push(p.get('nights')+' notti');
+  if(p.get('guests'))pills.push(p.get('guests')+' ospiti');
+  const det=document.getElementById('gb-details');
+  pills.forEach(t=>{const s=document.createElement('span');s.className='gb-pill';s.textContent=t;det.appendChild(s);});
+  banner.style.display='block';
+})();
+
 const WMO={0:'☀️',1:'🌤️',2:'⛅',3:'🌥️',45:'🌫️',48:'🌫️',51:'🌦️',53:'🌦️',55:'🌦️',61:'🌧️',63:'🌧️',65:'🌧️',71:'🌨️',73:'🌨️',75:'🌨️',80:'🌧️',81:'🌧️',82:'🌧️',95:'⛈️',96:'⛈️',99:'⛈️'};
 const DOW={it:['Dom','Lun','Mar','Mer','Gio','Ven','Sab'],en:['Sun','Mon','Tue','Wed','Thu','Fri','Sat'],de:['So','Mo','Di','Mi','Do','Fr','Sa'],ru:['Вс','Пн','Вт','Ср','Чт','Пт','Сб']};
 let meteoData=null;
